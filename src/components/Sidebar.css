@@ -1,0 +1,115 @@
+.sidebar {
+  width: 150px;
+  height: 100vh;
+  background-color: #f4f4f4;
+  padding: 15px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid #ddd;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+  z-index: 1000; /* Garante que a sidebar fique sobre outros elementos */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px; /* Adiciona espaço entre o input e o botão */
+}
+
+.search-bar button {
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3; /* Altera a cor ao passar o mouse */
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+a {
+  
+
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold; /* Deixa o texto dos links em negrito */
+  padding: 10px 15px; /* Adiciona preenchimento ao link */
+  display: block; /* Garante que o link ocupe toda a largura do item */
+  border-radius: 4px; /* Bordas arredondadas */
+}
+
+nav ul li a:hover {
+  color: rgb(0, 0, 0);
+  background-color: #2c2c2c; /* Muda o fundo ao passar o mouse */
+}
+
+/* src/components/Sidebar.css */
+
+.company-selector {
+  margin-top: auto; /* Para posicionar o select na parte inferior */
+  padding: 10px;
+}
+
+.company-selector select {
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+
+
+/* src/components/Sidebar.css */
+
+.dynamic-menu {
+  margin-top: auto; /* Para posicionar o menu dinâmico na parte inferior */
+  padding: 10px;
+}
+
+.dynamic-menu h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.dynamic-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dynamic-menu li {
+  margin-bottom: 5px;
+}
+
+.dynamic-menu a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 0.99em;
+}
+
+.dynamic-menu a:hover {
+  text-decoration: underline;
+}

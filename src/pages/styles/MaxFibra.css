@@ -1,0 +1,24 @@
+.max-fibra {
+  display: flex;
+  padding-left: 190px;
+  padding-top: 130px;
+}
+
+.content-max-fibra {
+  margin-top: 80vh;
+  margin-right: 110px; /* Espaço para o menu lateral */
+  padding: 20px;
+  flex: 1;
+  width: 100%
+}
+
+h2 {
+  padding-left: 30px;
+}
+
+.link-container-max-fibra {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px; /* Espaçamento entre os itens */
+  padding-left: 15px;
+}

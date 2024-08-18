@@ -1,0 +1,27 @@
+/* src/components/NotificationBadge.css */
+.notification-badge {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.badge {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.label {
+  color: red;
+  font-weight: bold;
+}

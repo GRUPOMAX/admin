@@ -1,0 +1,22 @@
+.notification-badge {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .badge {
+    background-color: red;
+    border-radius: 40px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+  
+  .label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  

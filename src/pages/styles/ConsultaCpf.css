@@ -1,0 +1,24 @@
+/* src/pages/ConsultaCpf.css */
+.consulta-cpf {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-left: 300px;
+  color: rgb(0, 85, 212);
+}
+
+.iframe-consulta {
+  padding-left: 300px;
+  padding-bottom: 300px;
+  width: 1300px; /* Ajusta a largura para ocupar 100% do espaço disponível */
+  height: 1300px; /* Ajusta a altura para ocupar 80% da altura da tela */
+  border: none;
+}

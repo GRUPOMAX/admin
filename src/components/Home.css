@@ -1,0 +1,20 @@
+.home {
+  display: flex;
+}
+
+.content {
+  margin-left: 250px; /* Espaço para o menu lateral */
+  padding: 20px;
+  flex: 1;
+}
+
+h2 {
+  padding-left: 30px;
+}
+
+.link-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espaçamento entre os itens */
+  padding-left: 15px;
+}

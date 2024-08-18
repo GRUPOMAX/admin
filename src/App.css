@@ -1,0 +1,43 @@
+/* src/App.css */
+
+.App {
+  display: flex;
+}
+
+/* Estilos para a barra lateral (sidebar) */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid #ddd;
+}
+
+/* Estilos para o conteúdo principal */
+.content {
+  margin-left: 10px; /* Ajuste conforme a largura da barra lateral */
+  padding: 20px;
+  width: calc(100% - 250px); /* Ajusta a largura do conteúdo principal */
+}
+
+/* Estilos para o menu de navegação */
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+nav ul li a:hover {
+  color: #007bff;
+}

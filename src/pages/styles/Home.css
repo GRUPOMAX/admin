@@ -1,0 +1,38 @@
+/* src/pages/Home.css */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    width: 100%; /* Certifique-se de que o contêiner tem largura suficiente */
+  }
+  
+
+  .content {
+    flex: 1; /* Faz com que o conteúdo expanda para preencher o espaço disponível */
+    padding: 20px; /* Adiciona espaçamento interno */
+    overflow: auto; /* Adiciona barras de rolagem se necessário */
+    min-height: 100vh; /* Garante que a altura mínima seja a altura da tela */
+  }
+  
+  
+  .dashboard-cards {
+    display: flex;
+    flex-wrap: nowrap; /* Permite que os itens se movam para a linha seguinte se necessário */
+    gap: 20px; /* Espaço entre os cartões */
+    justify-content: center; /* Centraliza os cartões */
+  }
+  
+  
+  .card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    width: 100%;
+  }
+  
