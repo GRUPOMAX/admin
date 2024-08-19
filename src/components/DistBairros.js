@@ -14,7 +14,12 @@ const DistBairros = () => {
   useEffect(() => {
     const fetchBairrosData = async () => {
       try {
-        const response = await axios.get('/bairros_count.json');
+        // Definir baseURL dependendo do ambiente
+        const baseURL = process.env.NODE_ENV === 'production' 
+          ? 'https://apidoixc.nexusnerds.com.br'
+          : '';
+
+        const response = await axios.get(`${baseURL}/bairros_count.json`);
         console.log('Resposta da API:', response.data); // Exibe o resultado completo da requisição no console
         setBairrosData(response.data);
       } catch (error) {
@@ -32,6 +37,13 @@ const DistBairros = () => {
     <Card
       className="dist-bairros-dashboard"
       bordered={false}
+      style={{
+        width: '100%',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Adiciona sombra ao Card
+        borderRadius: '8px', // Adiciona bordas arredondadas
+        padding: '20px', // Adiciona espaçamento interno
+        backgroundColor: '#ffffff' // Cor de fundo branca
+      }}
     >
       <Title level={3}>Distribuição dos Bairros</Title>
       {loading ? (
@@ -39,9 +51,9 @@ const DistBairros = () => {
       ) : error ? (
         <Text type="danger">{error}</Text>
       ) : (
-        <div className="bar-chart-container">
+        <div className="bar-chart-container" style={{ textAlign: 'center' }}>
           <BarChart width={900} height={300} data={bairrosData}>
-          <XAxis dataKey="bairro" tick={false} /> {/* Oculta os labels do eixo X */}
+            <XAxis dataKey="bairro" tick={false} /> {/* Oculta os labels do eixo X */}
             <YAxis />
             <Tooltip />
             <Legend />

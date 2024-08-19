@@ -13,7 +13,12 @@ const ClientesBloqueadosDashboard = () => {
   useEffect(() => {
     const fetchClientesBloqueados = async () => {
       try {
-        const response = await axios.get('/filtered_count');
+        // Definir baseURL dependendo do ambiente
+        const baseURL = process.env.NODE_ENV === 'production' 
+          ? 'https://apidoixc.nexusnerds.com.br'
+          : '';
+
+        const response = await axios.get(`${baseURL}/filtered_count`);
         const count = Number(response.data.count);
         setClientesBloqueados(count);
       } catch (error) {
@@ -36,16 +41,18 @@ const ClientesBloqueadosDashboard = () => {
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)', // Adiciona sombra ao Card
         borderRadius: '8px', // Adiciona bordas arredondadas
         padding: '20px', // Adiciona espaçamento interno
+        backgroundColor: '#f5222d' // Cor de fundo vermelho personalizada
       }}
     >
-      <Title level={3}>Clientes Bloqueados</Title>
+      <Title level={3} style={{ color: 'white' }}>Clientes Bloqueados</Title>
       {loading ? (
         <Spin />
       ) : error ? (
-        <Text type="danger">{error}</Text>
+        <Text type="danger" style={{ fontSize: '16px' }}>{error}</Text>
       ) : (
-        <Text style={{ fontSize: '24px', fontWeight: 'bold' , color: 'white'}}
-        >{clientesBloqueados !== null ? clientesBloqueados : 'N/A'}</Text>
+        <Text style={{ fontSize: '24px', fontWeight: 'bold', color: 'white' }}>
+          {clientesBloqueados !== null ? clientesBloqueados : 'N/A'}
+        </Text>
       )}
     </Card>
   );

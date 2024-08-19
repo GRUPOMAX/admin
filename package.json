@@ -2,7 +2,7 @@
   "name": "my-admin-dashboard",
   "version": "0.1.0",
   "homepage": "https://grupomax.github.io/area_administrativa/",
-  "proxy": "http://apidoixc.nexusnerds.com.br:8080",
+  "proxy": "https://apidoixc.nexusnerds.com.br",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
