@@ -16,7 +16,7 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
   return (
-    <Router>
+    <Router basename="/area_administrativa">
       <div className={`App ${window.location.pathname === '/cadastro' ? 'cadastro-page' : ''}`}>
         <Routes>
           {!isAuthenticated ? (
@@ -35,6 +35,7 @@ const App = () => {
         </div>
       </div>
     </Router>
+
   );
 };
 

@@ -15,7 +15,7 @@ const ClientesBloqueadosDashboard = () => {
       try {
         // Definir baseURL dependendo do ambiente
         const baseURL = process.env.NODE_ENV === 'production' 
-          ? 'https://apidoixc.nexusnerds.com.br'
+          ? 'https://www.apidoixc.nexusnerds.com.br'
           : '';
 
         const response = await axios.get(`${baseURL}/filtered_count`);
