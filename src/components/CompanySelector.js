@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import './CompanySelector.css'; // Importe o arquivo CSS
 
 const CompanySelector = () => {
   const navigate = useNavigate();

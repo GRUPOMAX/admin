@@ -1,20 +1,15 @@
-.home {
-  display: flex;
-}
-
-.content {
-  margin-left: 250px; /* Espaço para o menu lateral */
+.home-container {
   padding: 20px;
-  flex: 1;
+  background-color: #f0f2f5;
 }
 
-h2 {
-  padding-left: 30px;
+.ant-row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-.link-container {
+.ant-col {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Espaçamento entre os itens */
-  padding-left: 15px;
+  justify-content: center;
+  align-items: flex-start;
 }

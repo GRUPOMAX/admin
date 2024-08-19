@@ -1,0 +1,29 @@
+/* DistBairros.css */
+
+.dist-bairros-dashboard {
+    width: 100%;
+    max-width: 100%; /* Garante que o Card não ultrapasse a largura do container */
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra do Card */
+    border-radius: 8px;
+    background-color: #fff; /* Fundo branco para o Card */
+  }
+  
+  .bar-chart-container {
+    display: flex;
+    justify-content: center; /* Centraliza o gráfico horizontalmente */
+    margin: 20px 0; /* Espaço acima e abaixo do gráfico */
+  }
+  
+  .ant-card-body {
+    padding: 0; /* Remove o padding padrão do Card */
+  }
+  
+  @media (max-width: 768px) {
+    .bar-chart-container {
+      flex-direction: column; /* Alinha o gráfico verticalmente em telas pequenas */
+      align-items: center;
+    }
+  }
+  

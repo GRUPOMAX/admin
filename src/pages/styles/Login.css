@@ -6,7 +6,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
 }
 
 .login-container {
@@ -14,7 +14,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   height: 100%;
   width: 100%;
 }

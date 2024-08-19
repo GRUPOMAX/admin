@@ -1,23 +1,28 @@
+/* src/styles/VirTelecom.css */
 .home-virtelecom {
-  padding-left: 190px;
-
+  display: flex;
+  flex-direction: row;
+  margin-top: 65vh;
+  height: 100%; /* Faz com que a div ocupe toda a altura disponível */
+  width: 130vh;
+  margin-right: 300px;
 }
 
 .content-virtelecom {
-  margin-top: 50vh;
-  margin-right: 110vh; /* Espaço para o menu lateral */
-  padding: 20px;
-  flex: 1;
-  width: 100%;
+  flex: 1; /* Faz com que a div ocupe o espaço restante */
+  padding: 170px;
+  margin-top: -90px;
+  overflow-y: auto; /* Permite rolagem vertical se necessário */
 }
 
 h2 {
-  padding-left: 30px;
+  font-size: 1.5em; /* Ajuste o tamanho do título conforme necessário */
+  color: #333;
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
 }
 
 .link-container-virtelecom {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* Permite que os itens se movam para a linha seguinte quando necessário */
   gap: 10px; /* Espaçamento entre os itens */
-  padding-left: 15px;
 }

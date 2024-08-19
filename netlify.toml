@@ -1,5 +1,8 @@
+[build]
+  publish = "build" # ou o caminho do diretório onde o seu projeto é construído
+  functions = "netlify/functions"
+
 [[redirects]]
   from = "/api/*"
-  to = "https://ixc.maxfibraltda.com.br/webservice/v1/cliente"
+  to = "/.netlify/functions/:splat"
   status = 200
-  force = true

@@ -1,43 +1,27 @@
-/* Estilo do Popup */
+/* src/components/Popup.css */
+/* src/components/Popup.css */
 .popup {
   position: fixed;
-  bottom: 20px; /* Distância do fundo da tela */
-  right: 20px;  /* Distância da borda direita da tela */
-  background-color: rgba(53, 241, 35, 0.705); /* Fundo semi-transparente, ajustado para visibilidade */
-  padding: 2px;
-  box-shadow: 0 0 5px rgba(30, 255, 0, 0.568);
-  border-radius: 10px;
-  z-index: 1000;
-  opacity: 1;
-  transition: opacity 0.5s ease; /* Transição suave para desaparecer */
+  bottom: 10px; /* Ajuste conforme necessário */
+  right: 10px;  /* Ajuste conforme necessário */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Garante que o popup fique sobre outros elementos */
+  max-width: 300px; /* Ajuste conforme necessário */
+  border-radius: 4px; /* Bordas arredondadas */
+  white-space: nowrap; /* Impede quebra de linha no conteúdo */
 }
 
-/* Estilo do conteúdo do Popup */
 .popup-content {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
+  font-size: 14px; /* Tamanho da fonte do conteúdo do popup */
 }
 
-/* Estilo do botão de fechar */
 .popup-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background: transparent;
-  font-size: 18px;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
-  color: #333;
-}
-
-.popup-close:hover {
-  color: #ff0000; /* Cor do botão de fechar ao passar o mouse */
-}
-
-/* Estilo do texto do Popup */
-.popup-text {
-  font-size: 14px;
+  font-size: 18px;
 }

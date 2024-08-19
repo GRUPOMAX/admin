@@ -1,0 +1,10 @@
+/* src/styles/Content.css */
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Faz com que o conteúdo ocupe o espaço restante */
+    margin-left: 250px; /* Ajuste conforme a largura da barra lateral */
+    padding: 20px;
+    overflow: auto; /* Permite rolagem se o conteúdo exceder o espaço visível */
+  }
+  

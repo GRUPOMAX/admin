@@ -1,0 +1,27 @@
+/* src/components/CompanySelector.css */
+
+.company-selector {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .company-selector select {
+    padding: 10px;
+    border: 1px solid #058bf8;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .company-selector select:focus {
+    border-color: #007bff;
+    background-color: #e6f0ff;
+    outline: none;
+  }
+  
+  .company-selector option {
+    padding: 5px;
+  }
+  

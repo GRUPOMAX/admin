@@ -1,9 +1,14 @@
 // src/components/Sidebar.js
 
-import './Sidebar.css';
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import CompanySelector from './CompanySelector'; // Importe o novo componente
+import { Layout, Menu, Input, Typography } from 'antd';
+import CompanySelector from './CompanySelector';
+import './Sidebar.css';
+
+const { Sider } = Layout;
+const { Search } = Input;
+const { Title } = Typography;
 
 const Sidebar = () => {
   const location = useLocation();
@@ -11,9 +16,10 @@ const Sidebar = () => {
   // Defina as opções para cada página
   const menuOptions = {
     '/area_administrativa/max-fibra': [
+      { name: 'Dashboard', href: '/area_administrativa/home' },
       { name: 'Consulta CNPJ', href: '/area_administrativa/max-fibra/consultaCNPJ' },
-      { name: 'Consulta CPF', href: '/area_administrativa/max-fibra/consultaCPF' },
-      { name: 'Opção Nª 3', href: '/max-fibra/opcao2' },
+      { name: 'Cadastro Vendedor', href: '/area_administrativa/max-fibra/cadastro' },
+
     ],
     '/area_administrativa/vir-telecom': [
       { name: 'Opção 1 - Vir', href: '/vir-telecom/opcao1' },
@@ -26,38 +32,44 @@ const Sidebar = () => {
     '/area_administrativa/max-fibra/consultaCNPJ': [
       { name: 'Pagina Inicial', href: '/max-fibra' },
       { name: 'Consulta CPF', href: '/max-fibra/consultaCPF' },
-    ]    ,
+    ],
     '/area_administrativa/max-fibra/consultaCPF': [
       { name: 'Pagina Inicial', href: '/max-fibra' },
       { name: 'Consulta CNPJ', href: '/max-fibra/consultaCNPJ' },
-    ]
+    ],
+    '/area_administrativa/max-fibra/cadastro':[
+    { name: 'Pagina inical', href: '/home' },
+    ],
+    '/area_administrativa/home':[
+      { name: 'Pagina Inicial', href: '/area_administrativa/max-fibra' },
+      { name: 'Cadastro Vendedor', href: '/area_administrativa/max-fibra/cadastro' },
+      ],
   };
 
   const currentPath = location.pathname;
   const options = menuOptions[currentPath] || [];
 
   return (
-    <div className="sidebar">
+    <Sider className="sidebar" width={250} theme="light">
       <div className="search-bar">
-        <input type="text" placeholder="Pesquisa..." />
-        <button>Search</button>
+        <Search placeholder="Pesquisa..." enterButton />
       </div>
       <div className="dynamic-menu">
         {options.length > 0 && (
           <>
-            <h2>Menu</h2>
-            <ul>
+            <Title level={4}>Menu</Title>
+            <Menu mode="inline" selectedKeys={[currentPath]}>
               {options.map((option, index) => (
-                <li key={index}>
+                <Menu.Item key={option.href}>
                   <Link to={option.href}>{option.name}</Link>
-                </li>
+                </Menu.Item>
               ))}
-            </ul>
+            </Menu>
           </>
         )}
       </div>
-      <CompanySelector /> {/* Adicione o novo componente aqui */}
-    </div>
+      <CompanySelector />
+    </Sider>
   );
 };
 

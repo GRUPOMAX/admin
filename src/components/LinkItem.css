@@ -1,40 +1,44 @@
-.link-item {
-  background-color: #f0f0f0;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-align: center;
-  max-width: 200px;
+/* src/components/LinkItem.css */
+.link-item-container {
+  position: relative; /* Para posicionar o popup dentro do link item */
   margin: 10px;
 }
 
-.link-item a {
+.link-item {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(15, 253, 55, 0.1); /* Sombra sutil */
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;
-  color: inherit;
+  cursor: pointer;
+  text-align: center;
+  position: relative; /* Garantir que o popup não sobreponha o link item */
+}
+
+.link-item:hover {
+  transform: scale(1.05); /* Aumenta ligeiramente o item ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao passar o mouse */
 }
 
 .link-item img {
   width: 100%;
   height: auto;
-  transition: opacity 0.3s ease;
+  display: block;
 }
 
 .link-item p {
-  margin: 10px 0;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  font-size: 1em;
   color: #333;
+  background-color: #fff;
 }
 
-.link-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.link-item:hover img {
-  opacity: 0.9;
+.link-item a {
+  display: block;
+  text-decoration: none;
 }

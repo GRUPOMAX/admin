@@ -11,31 +11,21 @@ const LinkItem = ({ url, imgSrc, altText, text, popupText, isIframe, isEquipamen
   const [hideTimeout, setHideTimeout] = useState(null);
 
   const handleMouseEnter = () => {
-    if (popupText) {
+    if (popupText || isEquipamentos) {
       if (hideTimeout) {
         clearTimeout(hideTimeout); // Limpa o timeout se o mouse entrar novamente
       }
       setShowPopup(true);
-    }
-
-    if (isEquipamentos) {
-      if (hideTimeout) {
-        clearTimeout(hideTimeout); // Limpa o timeout se o mouse entrar novamente
+      if (isEquipamentos) {
+        setShowEquipamentosPopup(true);
       }
-      setShowEquipamentosPopup(true);
     }
   };
 
   const handleMouseLeave = () => {
-    if (popupText) {
+    if (popupText || isEquipamentos) {
       const timeout = setTimeout(() => {
         setShowPopup(false);
-      }, 2000); // Tempo em milissegundos para o popup desaparecer após o mouse sair
-      setHideTimeout(timeout);
-    }
-
-    if (isEquipamentos) {
-      const timeout = setTimeout(() => {
         setShowEquipamentosPopup(false);
       }, 2000); // Tempo em milissegundos para o popup desaparecer após o mouse sair
       setHideTimeout(timeout);

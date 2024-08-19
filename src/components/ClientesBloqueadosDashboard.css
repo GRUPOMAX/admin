@@ -1,4 +1,3 @@
-/* src/pages/ClientesBloqueadosDashboard.css */
 .clientes-bloqueados-dashboard {
   background: #d33108; /* Cor de fundo */
   border-radius: 8px; /* Bordas arredondadas */
@@ -20,4 +19,35 @@
   font-weight: bold;
   font-size: 1.8em; /* Tamanho do texto */
   color: #ffffff; /* Cor do texto */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .clientes-bloqueados-dashboard {
+    margin: 10px; /* Menos margem em telas menores */
+    padding: 15px; /* Menos padding em telas menores */
+  }
+
+  .clientes-bloqueados-dashboard h3 {
+    font-size: 1.2em; /* Tamanho do texto menor em telas menores */
+  }
+
+  .clientes-bloqueados-dashboard p {
+    font-size: 1.5em; /* Tamanho do texto menor em telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .clientes-bloqueados-dashboard {
+    margin: 5px; /* Margem ainda menor em telas muito pequenas */
+    padding: 10px; /* Padding ainda menor em telas muito pequenas */
+  }
+
+  .clientes-bloqueados-dashboard h3 {
+    font-size: 1em; /* Tamanho do texto menor em telas muito pequenas */
+  }
+
+  .clientes-bloqueados-dashboard p {
+    font-size: 1.2em; /* Tamanho do texto menor em telas muito pequenas */
+  }
 }
