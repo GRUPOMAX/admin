@@ -1,10 +1,9 @@
 import React from 'react';
-import { Row, Col, Card } from 'antd';
+//import { Card } from 'antd';
 import Sidebar from '../components/Sidebar';
 import LinkItem from '../components/LinkItem';
 import './styles/MaxFibra.css';
 
-const { Meta } = Card;
 
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card } from 'antd';
+import { Row, Col} from 'antd';
 import Sidebar from '../components/Sidebar';
 import LinkItem from '../components/LinkItem';
 import './styles/VirTelecom.css';
