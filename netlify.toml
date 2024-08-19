@@ -1,8 +1,0 @@
-[build]
-  publish = "build" # ou o caminho do diretório onde o seu projeto é construído
-  functions = "netlify/functions"
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200

@@ -1,7 +1,7 @@
 {
-  "name": "my-admin-dashboard",
+  "name": "admin",
   "version": "0.1.0",
-  "homepage": "https://grupomax.github.io/area_administrativa/",
+  "homepage": "https://grupomax.github.io/admin/",
   "proxy": "https://apidoixc.nexusnerds.com.br",
   "private": true,
   "dependencies": {
