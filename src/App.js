@@ -16,25 +16,25 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
   return (
-    <Router basename="/area_administrativa">
-      <div className={`App ${window.location.pathname === '/cadastro' ? 'cadastro-page' : ''}`}>
-        <Routes>
-          {!isAuthenticated ? (
-            <Route path="*" element={<Login onLogin={() => setIsAuthenticated(true)} />} />
-          ) : (
-            <>
-              <Route path="/area_administrativa/*" element={<SidebarLayout />} />
-              <Route path="*" element={<Navigate to="/area_administrativa/home" replace />} />
-            </>
-          )}
-        </Routes>
-        {/* Tela de aviso para dispositivos móveis */}
-        <div className="mobile-warning">
-          <img src="https://i.ibb.co/g9KDtqK/warning.png" alt="Aviso" />
-          <p>O aplicativo está disponível apenas para desktop.</p>
+      <Router basename="/area_administrativa">
+        <div className={`App ${window.location.pathname === '/cadastro' ? 'cadastro-page' : ''}`}>
+          <Routes>
+            {!isAuthenticated ? (
+              <Route path="*" element={<Login onLogin={() => setIsAuthenticated(true)} />} />
+            ) : (
+              <>
+                <Route path="/home" element={<SidebarLayout />} />
+                <Route path="*" element={<Navigate to="/home" replace />} />
+              </>
+            )}
+          </Routes>
+          {/* Tela de aviso para dispositivos móveis */}
+          <div className="mobile-warning">
+            <img src="https://i.ibb.co/g9KDtqK/warning.png" alt="Aviso" />
+            <p>O aplicativo está disponível apenas para desktop.</p>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
 
   );
 };
@@ -57,5 +57,6 @@ const SidebarLayout = () => (
     </div>
   </>
 );
+
 
 export default App;
