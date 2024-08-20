@@ -18,8 +18,8 @@ const ClientesAtivosDashboard = () => {
           ? 'https://apidoixc.nexusnerds.com.br'
           : '';
 
-        const response = await axios.get(`${baseURL}/clientesAtivos`);
-        const totalAjustado = response.data.total - 513; // Ajuste conforme necessário
+        const response = await axios.get(`${baseURL}/resultado.json`);
+        const totalAjustado = response; // Ajuste conforme necessário
         setClientesAtivos(totalAjustado);
       } catch (error) {
         setError('Erro ao buscar os dados.');
