@@ -19,7 +19,7 @@ const ClientesAtivosDashboard = () => {
           : '';
 
         const response = await axios.get(`${baseURL}/clientesAtivos`);
-        const totalAjustado = response.data.total - 514; // Ajuste conforme necessário
+        const totalAjustado = response.data.total - 513; // Ajuste conforme necessário
         setClientesAtivos(totalAjustado);
       } catch (error) {
         setError('Erro ao buscar os dados.');
