@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Upload, message, Card } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { uploadImageToFirebase } from '../firebaseUtils';
-import { updateDoc, doc } from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
 const ConfigScreen = ({ userProfile }) => {
@@ -20,9 +20,9 @@ const ConfigScreen = ({ userProfile }) => {
         backgroundUrl = await uploadImageToFirebase(values.image.file.originFileObj);
       }
 
-      // Salva a URL no Firestore (você pode adaptar para salvar em uma coleção específica)
+      // Salva a URL no Firestore usando setDoc (cria ou atualiza o documento)
       const configDocRef = doc(db, 'appConfig', 'loginBackground');
-      await updateDoc(configDocRef, { backgroundUrl });
+      await setDoc(configDocRef, { backgroundUrl }, { merge: true });
 
       message.success('Fundo da tela de login atualizado com sucesso!');
     } catch (error) {
@@ -40,7 +40,7 @@ const ConfigScreen = ({ userProfile }) => {
           <Form.Item
             label="URL da Imagem de Fundo"
             name="backgroundUrl"
-            rules={[{ required: true, message: 'Por favor, insira a URL da imagem!' }]}
+            rules={[{ required: false, message: 'Por favor, insira a URL da imagem!' }]}
           >
             <Input placeholder="Digite a URL da imagem de fundo" />
           </Form.Item>

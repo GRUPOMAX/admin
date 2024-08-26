@@ -29,7 +29,6 @@
 }
 
 .logout-button {
-  background-color: #ff4d4f;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -37,9 +36,6 @@
   border-radius: 5px;
 }
 
-.logout-button:hover {
-  background-color: #ff7875;
-}
 
 
 :where(.css-dev-only-do-not-override-1c0na6j).ant-dropdown .ant-dropdown-menu,

@@ -19,14 +19,17 @@ const Header = ({ userProfile, onLogout }) => {
       case 'createUser':
         navigate('/home/criar-usuario');
         break;
+      case 'sendNotification':
+        navigate('/home/send-notification');
+        break;
       case 'config':
         navigate('/home/config');
         break;
       case 'manageShortcuts':
         navigate('/home/gerenciar-atalhos');
         break;
-      case 'sendNotification': // Corrigido para a chave correta
-        navigate('/home/send-notification');
+      case 'usuariosOnline':
+        navigate('/home/usuarios-online');
         break;
       case 'logout':
         onLogout();
@@ -151,14 +154,17 @@ const Header = ({ userProfile, onLogout }) => {
         Editar Perfil
       </Menu.Item>
       {(userProfile.Cargo1 === 'Administrador' || userProfile.Cargo1 === 'Desenvolvedor') && (
-        <Menu.Item key="createUser" icon={<UserAddOutlined />}>
-          Criar Usuário
-        </Menu.Item>
-      )}
-      {(userProfile.Cargo1 === 'Administrador' || userProfile.Cargo1 === 'Desenvolvedor') && (
-        <Menu.Item key="sendNotification" icon={<SendOutlined  />}>
-          Enviar Notificação
-        </Menu.Item>
+        <>
+          <Menu.Item key="createUser" icon={<UserAddOutlined />}>
+            Criar Usuário
+          </Menu.Item>
+          <Menu.Item key="sendNotification" icon={<SendOutlined />}>
+            Enviar Notificação
+          </Menu.Item>
+          <Menu.Item key="usuariosOnline" icon={<UserOutlined />}>
+            Usuários Online
+          </Menu.Item>
+        </>
       )}
       {userProfile.Cargo1 === 'Desenvolvedor' && (
         <>

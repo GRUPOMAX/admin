@@ -2,11 +2,10 @@
 .max-fibra {
   display: flex;
   flex-direction: column; /* Coluna para organizar melhor em telas menores */
-<<<<<<< HEAD
   padding-left: 5%;
-=======
+
   padding-left: 10%;
->>>>>>> 12857f8 (ajustes de tela de login e reload)
+
   padding-top: 7%; /* Ajuste conforme necessário */
 }
 
@@ -42,11 +41,7 @@ h2 {
 /* Media Query para telas com largura de 1440px */
 @media (min-width: 1440px) {
   .max-fibra {
-<<<<<<< HEAD
-    padding-left: 3%;
-=======
     padding-left: 12%;
->>>>>>> 12857f8 (ajustes de tela de login e reload)
     padding-top: 5%;
   }
 }
@@ -56,11 +51,7 @@ h2 {
 /* Media Query para telas com largura de 1897px */
 @media (min-width: 1897px) {
   .max-fibra {
-<<<<<<< HEAD
-    padding-left: 5%;
-=======
     padding-left: 10%;
->>>>>>> 12857f8 (ajustes de tela de login e reload)
     padding-top: 5%;
   }
 }

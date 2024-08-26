@@ -1,27 +1,9 @@
 /* src/styles/Login.css */
-<<<<<<< HEAD
-
 body {
   margin: 0;
   padding: 0;
-=======
-body.login-background {
-  background-image: url('https://i.ibb.co/cJ9zpVz/Dashboard.png');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
-body {
-  margin: 0;
-  padding: 0;
->>>>>>> 12857f8 (ajustes de tela de login e reload)
-}
 
 .login-container {
   display: flex;
@@ -35,15 +17,7 @@ body {
 .login-form-wrapper {
   width: 100%;
   max-width: 400px;
-<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.85); /* Tornar o formulário um pouco transparente */
   padding: 20px;
   border-radius: 8px;
 }
-=======
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
->>>>>>> 12857f8 (ajustes de tela de login e reload)

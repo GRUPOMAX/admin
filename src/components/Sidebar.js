@@ -30,10 +30,8 @@ const Sidebar = ({ onLogout }) => {
     '/home/max-fibra/consultaCNPJ': [
       { name: 'Dashboard', href: '/max-fibra/consultaCPF' },
       { name: 'Pagina Inicial', href: '/max-fibra' },
-<<<<<<< HEAD
-=======
+
       { name: 'Consulta CPF', href: '/home/max-fibra/consultaCPF' },
->>>>>>> 12857f8 (ajustes de tela de login e reload)
     ],
     '/home/max-fibra/consultaCPF': [
       { name: 'Pagina Inicial', href: '/max-fibra' },
@@ -42,7 +40,6 @@ const Sidebar = ({ onLogout }) => {
     '/home/max-fibra/cadastro':[
     { name: 'Pagina inical', href: '/home' },
     ],
-<<<<<<< HEAD
     '/home':[
       { name: 'Max Fibra', href: '/home/max-fibra' },
       { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
@@ -59,7 +56,7 @@ const Sidebar = ({ onLogout }) => {
     '/home/gerenciar-atalhos':[
       { name: 'Dashboard', href: '/home' },
       { name: 'Max Fibra', href: '/home/max-fibra' },
-=======
+    ],
     '/home/home':[
       { name: 'Max Fibra', href: '/home/max-fibra' },
       { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
@@ -67,7 +64,6 @@ const Sidebar = ({ onLogout }) => {
       '/home':[
         { name: 'Max Fibra', href: '/home/max-fibra' },
         { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
->>>>>>> 12857f8 (ajustes de tela de login e reload)
         ],
   };
 
