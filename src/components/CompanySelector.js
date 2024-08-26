@@ -19,9 +19,15 @@ const CompanySelector = () => {
   return (
     <div className="company-selector">
       <select onChange={handleChange} value={currentPath}>
+<<<<<<< HEAD
         <option value="/home/max-fibra">Max Fibra</option>
         <option value="/home/vir-telecom">Vir Telecom</option>
         <option value="/home/reis-services">Reis Service</option>
+=======
+        <option value="/max-fibra">Max Fibra</option>
+        <option value="/vir-telecom">Vir Telecom</option>
+        <option value="/reis-services">Reis Service</option>
+>>>>>>> 12857f8 (ajustes de tela de login e reload)
       </select>
     </div>
   );

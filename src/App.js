@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
+=======
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
+>>>>>>> 12857f8 (ajustes de tela de login e reload)
 import MaxFibra from './pages/MaxFibra';
 import VirTelecom from './pages/VirTelecom';
 import ReisServices from './pages/ReisServices';
@@ -27,6 +32,7 @@ const App = () => {
     return localStorage.getItem('isAuthenticated') === 'true';
   });
 
+<<<<<<< HEAD
   const [userProfile, setUserProfile] = useState(() => {
     const savedProfile = localStorage.getItem('userProfile');
     return savedProfile ? JSON.parse(savedProfile) : null;
@@ -35,6 +41,13 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
+=======
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Verifica se a rota atual é a tela de login
+>>>>>>> 12857f8 (ajustes de tela de login e reload)
     const isLoginPage = location.pathname === '/' || location.pathname === '/login';
     if (isLoginPage) {
       document.body.classList.add('login-background');
@@ -43,6 +56,7 @@ const App = () => {
     }
   }, [location]);
 
+<<<<<<< HEAD
   const handleLogin = (userData) => {
     setIsAuthenticated(true);
     localStorage.setItem('isAuthenticated', 'true');
@@ -87,6 +101,33 @@ const App = () => {
                 />
               }
             />
+=======
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', 'true');
+    // Redireciona para /home após o login bem-sucedido
+    navigate('/home', { replace: true });
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('isAuthenticated');
+    // Redireciona para a tela de login
+    navigate('/login', { replace: true });
+  };
+
+  return (
+    <div className={`App ${location.pathname === '/cadastro' ? 'cadastro-page' : ''}`}>
+      <Routes>
+        {!isAuthenticated ? (
+          <>
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </>
+        ) : (
+          <>
+            <Route path="/home/*" element={<SidebarLayout onLogout={handleLogout} />} />
+>>>>>>> 12857f8 (ajustes de tela de login e reload)
             <Route path="*" element={<Navigate to="/home" replace />} />
           </>
         )}
@@ -99,6 +140,7 @@ const App = () => {
   );
 };
 
+<<<<<<< HEAD
 const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
   <>
     <Sidebar onLogout={onLogout} />
@@ -117,6 +159,21 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/gerenciar-atalhos" element={<GerenciarAtalhos userProfile={userProfile} />} />
         <Route path="/config" element={<ConfigScreen userProfile={userProfile} />} />
         <Route path="/send-notification" element={<SendNotification userProfile={userProfile} />} />
+=======
+const SidebarLayout = ({ onLogout }) => (
+  <>
+    <Sidebar onLogout={onLogout} />
+    <div className="content">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/max-fibra" element={<MaxFibra />} />
+        <Route path="/max-fibra/consultaCPF" element={<ConsultaCpf />} />
+        <Route path="/max-fibra/consultaCNPJ" element={<ConsultaCnpj />} />
+        <Route path="/home/vir-telecom" element={<VirTelecom />} />
+        <Route path="/home/reis-services" element={<ReisServices />} />
+        <Route path="/home/contact" element={<Contact />} />
+        <Route path="/max-fibra/cadastro" element={<Cadastro />} />
+>>>>>>> 12857f8 (ajustes de tela de login e reload)
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </div>

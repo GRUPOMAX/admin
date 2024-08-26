@@ -1,14 +1,21 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, Card, Typography, message } from 'antd';
 import axios from 'axios';
 import { getBackgroundConfig } from '../firebaseUtils';
 
+=======
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Form, Input, Button, Card, Typography, message } from 'antd';
+>>>>>>> 12857f8 (ajustes de tela de login e reload)
 import './styles/Login.css';
 
 const { Title } = Typography;
 
 const Login = ({ onLogin }) => {
+<<<<<<< HEAD
   const [background, setBackground] = useState(''); // Definindo o estado para o background
   const [loading, setLoading] = useState(false); // Definindo o estado para loading
   const navigate = useNavigate(); // Hook para navegação
@@ -69,6 +76,27 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="login-container" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+=======
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = (values) => {
+    setLoading(true);
+    // Simulação de autenticação simples
+    setTimeout(() => {
+      if (values.username === 'admin' && values.password === 'admin') {
+        onLogin(true);
+        navigate('/max-fibra'); // Redireciona para a página principal após o login
+      } else {
+        message.error('Credenciais inválidas');
+      }
+      setLoading(false);
+    }, 1000);
+  };
+
+  return (
+    <div className="login-container">
+>>>>>>> 12857f8 (ajustes de tela de login e reload)
       <div className="login-form-wrapper">
         <Card style={{ maxWidth: 400, margin: 'auto', padding: 20 }}>
           <Title level={3} style={{ textAlign: 'center' }}>Login</Title>
