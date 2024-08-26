@@ -1,28 +1,90 @@
-/* src/styles/VirTelecom.css */
+/* src/pages/VirTelecom.css */
 .home-virtelecom {
   display: flex;
-  flex-direction: row;
-  margin-top: 65vh;
-  height: 100%; /* Faz com que a div ocupe toda a altura disponível */
-  width: 130vh;
-  margin-right: 300px;
+  flex-direction: column; /* Coluna para organizar melhor em telas menores */
+  padding-left: 5%;
+  padding-top: 7%; /* Ajuste conforme necessário */
 }
 
 .content-virtelecom {
-  flex: 1; /* Faz com que a div ocupe o espaço restante */
-  padding: 170px;
-  margin-top: -90px;
-  overflow-y: auto; /* Permite rolagem vertical se necessário */
+  padding: 20px;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
 }
 
 h2 {
-  font-size: 1.5em; /* Ajuste o tamanho do título conforme necessário */
+  padding-left: 1%;
+  font-size: 1.5em; /* Tamanho do título */
   color: #333;
-  margin-bottom: 20px; /* Espaçamento abaixo do título */
 }
 
 .link-container-virtelecom {
   display: flex;
-  flex-wrap: nowrap; /* Permite que os itens se movam para a linha seguinte quando necessário */
-  gap: 10px; /* Espaçamento entre os itens */
+  flex-wrap: nowrap;
+  gap: 20px; /* Espaçamento entre os itens */
+  padding-left: 1%;
+}
+
+.link-item img {
+  width: 100%; /* Faz a imagem ocupar toda a largura do Card */
+  height: 150px; /* Define uma altura fixa */
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+}
+
+/* Media Query para telas com largura de 1440px */
+@media (min-width: 1440px) {
+  .home-virtelecom {
+    padding-left: 3%;
+    padding-top: 5%;
+  }
+}
+
+/* Media Query para telas com largura de 1897px */
+@media (min-width: 1897px) {
+  .home-virtelecom {
+    padding-left: 5%;
+    padding-top: 5%;
+  }
+  .content-virtelecom {
+    padding: 10px;
+  }
+
+  .link-container-virtelecom {
+    gap: 10px; /* Diminua o espaçamento entre os itens */
+  }
+
+  h2 {
+    padding-left: 2%;
+    font-size: 1.2em; /* Ajuste o tamanho do título */
+  }
+
+  .link-item img {
+    height: 100px; /* Ajuste a altura das imagens */
+  }
+}
+
+/* Media Query para telas menores */
+@media (max-width: 768px) {
+  .home-virtelecom {
+    padding-left: 45%; /* Ajuste o padding para se adaptar a telas menores */
+    padding-top: 50%; /* Diminua o padding-top para telas menores */
+  }
+
+  .content-virtelecom {
+    padding: 10px;
+  }
+
+  .link-container-virtelecom {
+    gap: 10px; /* Diminua o espaçamento entre os itens */
+  }
+
+  h2 {
+    padding-left: 2%;
+    font-size: 1.2em; /* Ajuste o tamanho do título */
+  }
+
+  .link-item img {
+    height: 100px; /* Ajuste a altura das imagens */
+  }
 }

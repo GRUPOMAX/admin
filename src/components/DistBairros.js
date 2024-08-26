@@ -20,7 +20,6 @@ const DistBairros = () => {
           : '';
 
         const response = await axios.get(`${baseURL}/bairros_count.json`);
-        console.log('Resposta da API:', response.data); // Exibe o resultado completo da requisição no console
         setBairrosData(response.data);
       } catch (error) {
         setError('Erro ao buscar os dados.');
@@ -39,7 +38,6 @@ const DistBairros = () => {
       bordered={false}
       style={{
         width: '100%',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Adiciona sombra ao Card
         borderRadius: '8px', // Adiciona bordas arredondadas
         padding: '20px', // Adiciona espaçamento interno
         backgroundColor: '#ffffff' // Cor de fundo branca

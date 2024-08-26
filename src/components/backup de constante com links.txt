@@ -2,10 +2,10 @@
     {
       title: 'Programas IXC',
       links: [
-        { url: 'https://ixc.maxfibraltda.com.br/adm.php', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-PROVEDOR.png', altText: 'IXC', text: 'IXC' },
-        { url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=fiber', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-IMAP.png', altText: 'IXC - FiberDocs', text: 'IXC - Imap' },
-        { url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=service', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-SERVICE.png', altText: 'IXC - Service', text: 'IXC - Service' },
-        { url: 'https://acs.maxfibraltda.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/PRO-1-1.gif', altText: 'IXC - ACS', text: 'IXC - ACS' },
+        { id: 'IXC', url: 'https://ixc.maxfibraltda.com.br/adm.php', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-PROVEDOR.png', altText: 'IXC', text: 'IXC' },
+        { id: 'IXCMapas', url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=fiber', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-IMAP.png', altText: 'IXC - FiberDocs', text: 'IXC - Imap' },
+        { id: 'IXCService', url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=service', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-SERVICE.png', altText: 'IXC - Service', text: 'IXC - Service' },
+        { id: 'IXCAcs', url: 'https://acs.maxfibraltda.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/PRO-1-1.gif', altText: 'IXC - ACS', text: 'IXC - ACS' },
       ],
     },
     //PROGRAMA IXC PROVEDOR  ==========================
@@ -33,8 +33,8 @@
     {
       title: 'Analise e Monitoramento',
       links: [
-        { url: 'https://grupomaxltda.smartolt.com/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SMART-OLT.png', altText: 'SMART-OLT', text: 'Smart-Olt'},
-        { url: 'http://172.25.255.20:3000/login', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Grafana.png', altText: 'GRAFANA',text: 'Grafana'  },
+        { id:'SmartOLT' ,url: 'https://grupomaxltda.smartolt.com/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SMART-OLT.png', altText: 'SMART-OLT', text: 'Smart-Olt'},
+        { id:'Grafana' , url: 'http://172.25.255.20:3000/login', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Grafana.png', altText: 'GRAFANA',text: 'Grafana'  },
       ],
     },
     //PROGRAMA ANALISE E MONITORAMENTO  ================
@@ -43,11 +43,11 @@
     {
       title: 'Administração e Controle',
       links: [
-         {url: 'https://app.powerbi.com/view?r=eyJrIjoiMjAzODkwOTQtOTRiOS00OGM0LTgzMzktOWE4YzZjNzdiNmUyIiwidCI6IjljZTY2NzI4LThmZmQtNDEzNS1hZTFkLTNiMmUyNjVlMjhlOSJ9',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/07/powerBI.jpg', altText: 'DFV',text: 'DFV'},
-        {url: 'https://autenticador.secullum.com.br/Authorization?response_type=code&client_id=3&redirect_uri=https%3A%2F%2Fpontoweb.secullum.com.br%2FAuth', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Secullum.png', altText: 'SECULLUM', text: 'Secullum - Ponto'},
-        {url: 'https://credlocaliza.com.br/sistema/account/login',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/CRED-LOCALIZA.jpg', altText: 'CredLocaliza', text: 'CredLocaliza' },
-        {url: 'https://www.playhub.com.br/APP/Login',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/07/Copia-de-PRO.gif', altText: 'PlayHub', text: 'PlayHub' },
-        {url: 'https://maxfibra.myog.io/admin/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/DATACAKE.png', altText: 'Area Administração - Totem', text: 'Area Administração - Totem' },
+        { id:'Dpv-Vendas' ,url: 'https://app.powerbi.com/view?r=eyJrIjoiMjAzODkwOTQtOTRiOS00OGM0LTgzMzktOWE4YzZjNzdiNmUyIiwidCI6IjljZTY2NzI4LThmZmQtNDEzNS1hZTFkLTNiMmUyNjVlMjhlOSJ9',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/07/powerBI.jpg', altText: 'DFV',text: 'DFV'},
+        { id:'Secullum' ,url: 'https://autenticador.secullum.com.br/Authorization?response_type=code&client_id=3&redirect_uri=https%3A%2F%2Fpontoweb.secullum.com.br%2FAuth', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Secullum.png', altText: 'SECULLUM', text: 'Secullum - Ponto'},
+        { id:'CredLocaliza' ,url: 'https://credlocaliza.com.br/sistema/account/login',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/CRED-LOCALIZA.jpg', altText: 'CredLocaliza', text: 'CredLocaliza' },
+        { id:'PLayHUB' ,url: 'https://www.playhub.com.br/APP/Login',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/07/Copia-de-PRO.gif', altText: 'PlayHub', text: 'PlayHub' },
+        { id:'Totem' ,url: 'https://maxfibra.myog.io/admin/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/DATACAKE.png', altText: 'Area Administração - Totem', text: 'Area Administração - Totem' },
       ],
     },
     //PROGRAMA ADMINISTRAÇÃO  ==========================
@@ -56,10 +56,10 @@
     {
       title: 'Programas úteis',
       links: [
-        {url: 'https://www.canva.com/pt_br/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Canva.png', altText: 'Canva',text: 'Canva'},
-        {url: 'https://mail.google.com/mail',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/gmail.png', altText: 'Gmail', text: 'Gmail' },
-        {url: 'https://trello.com/u/grupomax4/boards',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Trello.png', altText: 'Trello', text: 'Trello' },
-        {url: 'https://warnerbros.ent.box.com/s/ykklojfiaf7taxwfnwsdapsybbbxjrev',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/PRO-3.gif',altText: 'Driver', text: 'Driver - PlayHub'},
+        { id:'Canva' ,url: 'https://www.canva.com/pt_br/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Canva.png', altText: 'Canva',text: 'Canva'},
+        { id:'Gmail' ,url: 'https://mail.google.com/mail',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/gmail.png', altText: 'Gmail', text: 'Gmail' },
+        { id:'trello' ,url: 'https://trello.com/u/grupomax4/boards',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Trello.png', altText: 'Trello', text: 'Trello' },
+        { id:'Playhub-biblioteca' ,url: 'https://warnerbros.ent.box.com/s/ykklojfiaf7taxwfnwsdapsybbbxjrev',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/PRO-3.gif',altText: 'Driver', text: 'Driver - PlayHub'},
           ],
     },
     //PROGRAMA PROGRAMAS UTEIS  ========================

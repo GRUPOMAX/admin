@@ -19,9 +19,9 @@ const CompanySelector = () => {
   return (
     <div className="company-selector">
       <select onChange={handleChange} value={currentPath}>
-        <option value="/area_administrativa/max-fibra">Max Fibra</option>
-        <option value="/area_administrativa/vir-telecom">Vir Telecom</option>
-        <option value="/area_administrativa/reis-services">Reis Service</option>
+        <option value="/home/max-fibra">Max Fibra</option>
+        <option value="/home/vir-telecom">Vir Telecom</option>
+        <option value="/home/reis-services">Reis Service</option>
       </select>
     </div>
   );

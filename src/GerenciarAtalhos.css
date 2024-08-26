@@ -1,0 +1,87 @@
+/* GerenciarAtalhos.css */
+
+.gerenciar-atalhos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.atalhos-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 30px; /* Aumentei o gap para espaçamento mais amplo */
+  margin-top: 20px;
+}
+
+.atalho-item {
+  text-align: center;
+  flex: 1 1 calc(33.33% - 30px); /* Ajustei o cálculo para considerar o novo gap */
+  min-width: 250px;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.atalho-item img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.atalho-item p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.adicionar-atalho-button {
+  margin-bottom: 20px;
+}
+
+.modal-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  justify-content: space-around;
+}
+
+.gerenciar-atalhos {
+  position: relative;
+  padding: 20px;
+  padding-left: 220px;
+}
+
+.shortcut-list {
+  margin-top: 20px;
+}
+
+.add-shortcut-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.ant-card {
+  width: 250px;
+}
+
+.ant-card-cover img {
+  height: 150px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .atalho-item {
+    flex: 1 1 calc(50% - 30px);
+  }
+}
+
+@media (max-width: 480px) {
+  .atalho-item {
+    flex: 1 1 100%;
+  }
+}

@@ -2,8 +2,8 @@
 .max-fibra {
   display: flex;
   flex-direction: column; /* Coluna para organizar melhor em telas menores */
-  padding-left: 10%;
-  padding-top: 75%; /* Ajuste conforme necessário */
+  padding-left: 5%;
+  padding-top: 7%; /* Ajuste conforme necessário */
 }
 
 .content-max-fibra {
@@ -38,8 +38,8 @@ h2 {
 /* Media Query para telas com largura de 1440px */
 @media (min-width: 1440px) {
   .max-fibra {
-    padding-left: 10%;
-    padding-top: 88%;
+    padding-left: 3%;
+    padding-top: 5%;
   }
 }
 
@@ -48,8 +48,8 @@ h2 {
 /* Media Query para telas com largura de 1897px */
 @media (min-width: 1897px) {
   .max-fibra {
-    padding-left: 0.05%;
-    padding-top: 80%;
+    padding-left: 5%;
+    padding-top: 5%;
   }
 }
 

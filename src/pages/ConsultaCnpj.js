@@ -1,97 +1,105 @@
 import React, { useState } from 'react';
+import { Form, Input, Button, Card, Typography, Alert } from 'antd';
 import axios from 'axios';
-import './styles/ConsultaCnpj.css'; // 
+import './styles/ConsultaCnpj.css';
 
-
-
+const { Title, Text } = Typography;
 
 const ConsultaCnpj = () => {
-    const [cnpj, setCnpj] = useState('');
-    const [companyData, setCompanyData] = useState(null);
-    const [error, setError] = useState('');
-  
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-      setError('');
-      
-      const cleanedCnpj = cnpj.replace(/[^\d]+/g, '');
-      
-      if (cleanedCnpj.length !== 14) {
-        setError('Por favor, insira um CNPJ válido com 14 dígitos.');
-        return;
+  const [cnpj, setCnpj] = useState('');
+  const [companyData, setCompanyData] = useState(null);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async () => {
+    setError('');
+
+    const cleanedCnpj = cnpj.replace(/[^\d]+/g, '');
+
+    if (cleanedCnpj.length !== 14) {
+      setError('Por favor, insira um CNPJ válido com 14 dígitos.');
+      return;
+    }
+
+    await fetchCompanyData(cleanedCnpj);
+  };
+
+  const fetchCompanyData = async (cnpj) => {
+    try {
+      const proxyUrl = 'https://api.allorigins.win/raw?url=';
+      const apiUrl = `https://www.receitaws.com.br/v1/cnpj/${cnpj}`;
+      const response = await axios.get(proxyUrl + encodeURIComponent(apiUrl));
+
+      if (response.status !== 200) {
+        throw new Error(`Erro na resposta da API: ${response.status} ${response.statusText}`);
       }
-      
-      await fetchCompanyData(cleanedCnpj);
-    };
-  
-    const fetchCompanyData = async (cnpj) => {
-      try {
-        const proxyUrl = 'https://api.allorigins.win/raw?url=';
-        const apiUrl = `https://www.receitaws.com.br/v1/cnpj/${cnpj}`;
-        const response = await axios.get(proxyUrl + encodeURIComponent(apiUrl));
-  
-        if (response.status !== 200) {
-          throw new Error(`Erro na resposta da API: ${response.status} ${response.statusText}`);
-        }
-  
-        const data = response.data;
-  
-        if (data.status === 'ERROR') {
-          throw new Error(data.message || 'Erro desconhecido');
-        }
-  
-        setCompanyData(data);
-      } catch (error) {
-        console.error('Erro ao buscar dados:', error);
-        setError(error.message);
-        setCompanyData(null);
+
+      const data = response.data;
+
+      if (data.status === 'ERROR') {
+        throw new Error(data.message || 'Erro desconhecido');
       }
-    };
-  
-    return (
-      <div className="consulta-cnpj">
-        <h1>Consulta de CNPJ</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="cnpj">Digite o CNPJ:</label>
-            <input
-              type="text"
-              id="cnpj"
+
+      setCompanyData(data);
+    } catch (error) {
+      console.error('Erro ao buscar dados:', error);
+      setError(error.message);
+      setCompanyData(null);
+    }
+  };
+
+  return (
+    <div className="consulta-cnpj-container">
+      <Card style={{ maxWidth: 800, margin: '20px auto', padding: '20px', minHeight: '400px' }}>
+        <Title level={3}>Consulta de CNPJ</Title>
+        <Form layout="vertical" onFinish={handleSubmit}>
+          <Form.Item
+            label="Digite o CNPJ"
+            validateStatus={error ? "error" : ""}
+            help={error || ""}
+          >
+            <Input
               value={cnpj}
               onChange={(e) => setCnpj(e.target.value)}
-              placeholder="00000000000000"
-              required
+              placeholder="00.000.000/0000-00"
+              maxLength={18}
             />
-          </div>
-          <button type="submit">Consultar</button>
-          {error && <p className="error-message">{error}</p>}
-        </form>
+          </Form.Item>
+          <Button type="primary" htmlType="submit" block>
+            Consultar
+          </Button>
+        </Form>
+
         {companyData && (
-          <div className="company-data">
-            <h2>{companyData.nome}</h2>
-            <p><span className="highlight">CNPJ:</span> {companyData.cnpj}</p>
-            <p><span className="highlight">Abertura:</span> {companyData.abertura}</p>
-            <p><span className="highlight">Situação:</span> {companyData.situacao}</p>
-            <p><span className="highlight">Tipo:</span> {companyData.tipo}</p>
-            <p><span className="highlight">Porte:</span> {companyData.porte}</p>
-            <p><span className="highlight">Natureza Jurídica:</span> {companyData.natureza_juridica}</p>
-            <p><span className="highlight">Atividade Principal:</span> {companyData.atividade_principal[0].text} ({companyData.atividade_principal[0].code})</p>
-            <p><span className="highlight">Endereço:</span> {companyData.logradouro}, {companyData.numero} {companyData.complemento}, {companyData.bairro}, {companyData.municipio} - {companyData.uf}, CEP: {companyData.cep}</p>
-            <p><span className="highlight">Telefone:</span> {companyData.telefone}</p>
-            <p><span className="highlight">Última Atualização:</span> {new Date(companyData.ultima_atualizacao).toLocaleString()}</p>
-            <h3>Quadro de Sócios e Administradores:</h3>
+          <div className="company-data" style={{ marginTop: 20 }}>
+            <Title level={4}>{companyData.nome}</Title>
+            <p><Text strong>CNPJ:</Text> {companyData.cnpj}</p>
+            <p><Text strong>Abertura:</Text> {companyData.abertura}</p>
+            <p><Text strong>Situação:</Text> {companyData.situacao}</p>
+            <p><Text strong>Tipo:</Text> {companyData.tipo}</p>
+            <p><Text strong>Porte:</Text> {companyData.porte}</p>
+            <p><Text strong>Natureza Jurídica:</Text> {companyData.natureza_juridica}</p>
+            <p><Text strong>Atividade Principal:</Text> {companyData.atividade_principal[0].text} ({companyData.atividade_principal[0].code})</p>
+            <p><Text strong>Endereço:</Text> {companyData.logradouro}, {companyData.numero} {companyData.complemento}, {companyData.bairro}, {companyData.municipio} - {companyData.uf}, CEP: {companyData.cep}</p>
+            <p><Text strong>Telefone:</Text> {companyData.telefone}</p>
+            <p><Text strong>Última Atualização:</Text> {new Date(companyData.ultima_atualizacao).toLocaleString()}</p>
+            <Title level={5}>Quadro de Sócios e Administradores:</Title>
             <ul>
               {companyData.qsa.map(person => (
                 <li key={person.nome}>{person.nome} - {person.qual}</li>
               ))}
             </ul>
             <div className="footer">
-              <span className="highlight">Consulta realizada em:</span> {new Date().toLocaleString()} - <span className="highlight">by Jota</span>
+              <Text strong>Consulta realizada em:</Text> {new Date().toLocaleString()} - <Text strong>by Jota</Text>
             </div>
           </div>
         )}
-      </div>
-    );
-  };
-  
-  export default ConsultaCnpj;
+
+        {error && (
+          <Alert message="Erro" description={error} type="error" showIcon style={{ marginTop: 20 }} />
+        )}
+      </Card>
+    </div>
+  );
+};
+
+export default ConsultaCnpj;

@@ -16,22 +16,21 @@ const Sidebar = () => {
   // Defina as opções para cada página
   const menuOptions = {
     '/home/max-fibra': [
-      { name: 'Dashboard', href: '/home' },
+      { name: 'Dashboard', href: '/home/home' },
       { name: 'Consulta CNPJ', href: '/home/max-fibra/consultaCNPJ' },
       { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
 
     ],
     '/home/vir-telecom': [
-      { name: 'Opção 1 - Vir', href: '/vir-telecom/opcao1' },
-      { name: 'Opção 2 - Vir', href: '/vir-telecom/opcao2' },
+      { name: 'Consultar CNPJ', href: '/home/max-fibra/consultaCNPJ' },
     ],
     '/home/reis-services': [
       { name: 'Opção 1 - Reis', href: '/reis-services/opcao1' },
       { name: 'Opção 2 - Reis', href: '/reis-services/opcao2' },
     ],
     '/home/max-fibra/consultaCNPJ': [
+      { name: 'Dashboard', href: '/max-fibra/consultaCPF' },
       { name: 'Pagina Inicial', href: '/max-fibra' },
-      { name: 'Consulta CPF', href: '/max-fibra/consultaCPF' },
     ],
     '/home/max-fibra/consultaCPF': [
       { name: 'Pagina Inicial', href: '/max-fibra' },
@@ -41,9 +40,22 @@ const Sidebar = () => {
     { name: 'Pagina inical', href: '/home' },
     ],
     '/home':[
-      { name: 'Pagina Inicial', href: '/home/max-fibra' },
+      { name: 'Max Fibra', href: '/home/max-fibra' },
       { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
       ],
+    '/home/editar-perfil':[
+      { name: 'Dashboard', href: '/home' },
+      { name: 'Max Fibra', href: '/home/max-fibra' },
+      ],
+    '/home/criar-usuario':[
+      { name: 'Dashboard', href: '/home' },
+      { name: 'Max Fibra', href: '/home/max-fibra' },
+      ],
+
+    '/home/gerenciar-atalhos':[
+      { name: 'Dashboard', href: '/home' },
+      { name: 'Max Fibra', href: '/home/max-fibra' },
+        ],
   };
 
   const currentPath = location.pathname;
