@@ -17,6 +17,9 @@ import GerenciarAtalhos from './GerenciarAtalhos';
 import ConfigScreen from './pages/ConfigScreen';
 import SendNotification from './components/SendNotification';
 import UsuariosOnline from './components/UsuariosOnline';
+import DetalhesDispositivos from './pages/DetalhesDispositivos'; // Importe a nova página
+
+
 
 
 import axios from 'axios';
@@ -163,7 +166,8 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
     <Sidebar onLogout={onLogout} />
     <div className="layout-container">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home  userProfile={userProfile}/>} />
+        <Route path="/detalhes-dispositivos" element={<DetalhesDispositivos userProfile={userProfile}/>} /> {/* Nova rota */}
         <Route path="/max-fibra" element={<MaxFibra userProfile={userProfile} />} />
         <Route path="/max-fibra/consultaCPF" element={<ConsultaCpf />} />
         <Route path="/max-fibra/consultaCNPJ" element={<ConsultaCnpj />} />

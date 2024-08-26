@@ -171,11 +171,11 @@ const Header = ({ userProfile, onLogout }) => {
           <Menu.Item key="config" icon={<SettingOutlined />}>
             Configurações
           </Menu.Item>
-          <Menu.Item key="manageShortcuts" icon={<AppstoreOutlined />}>
-            Gerenciar Atalhos
-          </Menu.Item>
         </>
       )}
+        <Menu.Item key="manageShortcuts" icon={<AppstoreOutlined />}>
+            Gerenciar Atalhos
+        </Menu.Item>
       <Menu.Item key="logout" icon={<LogoutOutlined />}>
         Sair
       </Menu.Item>
