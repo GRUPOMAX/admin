@@ -11,25 +11,7 @@
   transition: width 0.3s; /* Transição suave para alterações de largura */
 }
 
-.search-bar {
-  display: flex;
-  align-items: center; /* Alinha verticalmente os itens */
-  margin-bottom: 20px;
-}
 
-.search-bar .ant-input {
-  flex: 1; /* Faz com que o input ocupe o espaço disponível */
-  margin-right: 10px; /* Espaço entre o input e o botão */
-}
-
-.search-bar .ant-input-search-button {
-  margin: 0; /* Remove qualquer margem padrão */
-  padding: 8px 16px; /* Ajuste o padding se necessário */
-  background-color: #007bff; /* Cor de fundo */
-  border: none; /* Remove bordas */
-  color: white; /* Cor do texto */
-  border-radius: 4px; /* Bordas arredondadas */
-}
 
 .search-bar .ant-input-search-button:hover {
   background-color: #0056b3; /* Altera a cor ao passar o mouse */

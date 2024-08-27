@@ -1,0 +1,117 @@
+.ordens-servico-dashboard-container {
+  padding: 20px;
+  margin-top: 80px;
+}
+
+.ant-tabs {
+  width: 100%;
+  
+}
+
+.ant-table {
+  width: 100%;
+  
+}
+
+.ant-table-container {
+  width: 100%;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.table-wrapper {
+  width: 100%;
+  
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.select-wrapper {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.apply-filter-button {
+  flex-shrink: 0;
+}
+
+.ant-tabs-tabpane {
+  width: 100%;
+}
+
+:where(.css-dev-only-do-not-override-1c0na6j).ant-table-wrapper .ant-table-thead >tr>th, :where(.css-dev-only-do-not-override-1c0na6j).ant-table-wrapper .ant-table-thead >tr>td {
+  position: relative;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 600;
+  text-align: start;
+  background: #0185f1;
+  border-bottom: 1px solid #f0f0f0;
+
+}
+
+.blinking-dot {
+  height: 5px;
+  width: 5px;
+  background-color: rgb(7, 224, 7);
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+  animation: blinking 1s infinite;
+}
+
+.blinking-tool-icon {
+  color: rgb(6, 218, 6);
+  animation: blinking 1s infinite;
+}
+
+.blinking-car-icon {
+  color: orange;
+  animation: blinking 1s infinite;
+}
+
+
+
+
+/* Ajuste para telas com largura de 1552px */
+@media (width: 1912px) {
+    .ant-tabs {
+      width: 1550px;
+      
+    }
+}
+
+
+
+  /* Ajuste para telas com largura de 1552px */
+@media (width: 1592px) {
+  .ant-tabs {
+    width: 1150px;
+    
+  }
+}
+
+
+
+@keyframes blinking {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.blinking-car-icon {
+  color: orange;
+  animation: blinking 1s infinite;
+}
+
+@keyframes blinking {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}

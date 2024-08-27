@@ -1,39 +1,53 @@
-.dashboard-container {
-  padding: 20px;
-  text-align: center;
+
+.dashboard-selector {
+  position: absolute;
+  top: 120px;
+  right: 20px;
+  z-index: 2; /* Garante que o seletor fique acima do conteúdo */
 }
 
-.dashboard-container .ant-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 8px;
+.dashboard-selector h3 {
+  margin-bottom: 0;
+  color: #0084ff;
 }
 
-.dashboard-container .ant-card {
-  width: 300px;
-  height: 150px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 15px;
+.dashboard-content {
+  margin-top: 5px; /* Ajuste para dar espaço para o seletor */
 }
 
-.dashboard-container .analysis-button {
-  margin-top: 20px;
-}
+  /* Mostrar o aviso em telas MAIORES que 1912px */
+  @media (max-width: 1912px) {
+    .dashboard-selector {
+      right: 5%;
+    }
 
+    .dashboard-selector h3 {
+      margin-bottom: 0px;
+      color: #0084ff;
 
-.dashboard-container {
-  padding: 20px;
-  text-align: center;
-}
+    }
 
-.dashboard-container .ant-row {
-  margin-bottom: 20px;
-}
+    .dashboard-content {
+      margin-top: 5px; /* Ajuste para dar espaço para o seletor */
+    }
+  }
+  
 
+  @media (min-width: 2560px) {
+    
+    .dashboard-selector {
+      right: 10%;
+    }
 
+      .dashboard-selector h3 {
+        margin-bottom: 0px;
+        color: #0084ff;
+
+      }
+
+      .dashboard-content {
+        margin-top: 5px; /* Ajuste para dar espaço para o seletor */
+      }
+
+    
+  }

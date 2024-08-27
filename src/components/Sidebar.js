@@ -57,14 +57,18 @@ const Sidebar = ({ onLogout }) => {
       { name: 'Dashboard', href: '/home' },
       { name: 'Max Fibra', href: '/home/max-fibra' },
     ],
+    '/home/detalhes-dispositivos':[
+        { name: 'Dashboard', href: '/home' },
+        { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
+      ],    
     '/home/home':[
       { name: 'Max Fibra', href: '/home/max-fibra' },
       { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
       ],
-      '/home':[
+    '/home':[
         { name: 'Max Fibra', href: '/home/max-fibra' },
         { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
-        ],
+      ],
   };
 
   const currentPath = location.pathname;
@@ -79,9 +83,6 @@ const Sidebar = ({ onLogout }) => {
 
   return (
     <Sider className="sidebar" width={250} theme="light">
-      <div className="search-bar">
-        <Search placeholder="Pesquisa..." enterButton />
-      </div>
       <div className="dynamic-menu">
         {options.length > 0 && (
           <>
@@ -97,19 +98,6 @@ const Sidebar = ({ onLogout }) => {
         )}
       </div>
       <CompanySelector />
-
-      {/* Botão de Logout */}
-      <div className="logout-button">
-        <Button
-          type="primary"
-          icon={<LogoutOutlined />}
-          onClick={handleLogout}
-          danger
-          style={{ marginTop: '20px', width: '100%' }}
-        >
-          Logout
-        </Button>
-      </div>
     </Sider>
   );
 };
