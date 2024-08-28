@@ -23,6 +23,9 @@ const Sidebar = ({ onLogout }) => {
     '/home/vir-telecom': [
       { name: 'Consultar CNPJ', href: '/home/max-fibra/consultaCNPJ' },
     ],
+    '/home/vir-telecom': [
+      { name: 'Dashboard Vir Telecom', href: '/home/vir-telecom/Dashboard-virtelecom' },
+    ],
     '/home/reis-services': [
       { name: 'Opção 1 - Reis', href: '/reis-services/opcao1' },
       { name: 'Opção 2 - Reis', href: '/reis-services/opcao2' },
@@ -40,6 +43,9 @@ const Sidebar = ({ onLogout }) => {
     '/home/max-fibra/cadastro':[
     { name: 'Pagina inical', href: '/home' },
     ],
+    '/home/Dashboard-virtelecom':[
+      { name: 'Atalhos Vir Telecom', href: '/home/vir-telecom' },
+      ], 
     '/home':[
       { name: 'Max Fibra', href: '/home/max-fibra' },
       { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },

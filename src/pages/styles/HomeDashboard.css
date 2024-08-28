@@ -1,0 +1,17 @@
+.dashboard-container-Virtelecom {
+    padding: 10vh;
+    margin-left: 15vh;
+  }
+  
+  .dashboard-selector {
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-content {
+    margin-top: 20px;
+  }
+  
+  .ant-table {
+    margin-top: 20px;
+  }
+  
