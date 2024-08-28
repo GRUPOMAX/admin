@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Tabs, message, Spin, Pagination, Select, Button } from 'antd';
+import { Table, Tabs, message, Spin, Pagination, Select, Button, Checkbox } from 'antd';
 import { ReloadOutlined, ToolOutlined, CarOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import './styles/OrdensServicoDashboard.css';
@@ -23,27 +23,28 @@ const OrdensServicoDashboard = () => {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
   const [selectedTechnician, setSelectedTechnician] = useState('');
-  const [selectedSubject, setSelectedSubject] = useState('Instalação');
+
+  // Novo estado para o valor padrão do assunto
+  const [defaultSubject, setDefaultSubject] = useState(localStorage.getItem('defaultSubject') || 'Instalação');
+  const [selectedSubject, setSelectedSubject] = useState(defaultSubject);
+
   const [appliedFilters, setAppliedFilters] = useState({
     status: '',
     technician: '',
-    subject: 'Instalação',
+    subject: defaultSubject,
   });
 
-  // Armazena a lista de técnicos e assuntos disponíveis para os filtros
   const [technicians, setTechnicians] = useState([]);
   const [subjects, setSubjects] = useState([]);
 
-  // Estado para gerenciar o botão e o temporizador
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(
     Number(localStorage.getItem('timeRemaining')) || 0
   );
 
-  // Estado para o ícone de ferramenta verde piscando
   const [hasExecutionOrders, setHasExecutionOrders] = useState(false);
-  // Estado para o ícone do carro piscando
   const [hasDeslocamentoOrders, setHasDeslocamentoOrders] = useState(false);
+  const [isDefaultSubjectChecked, setIsDefaultSubjectChecked] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,12 +75,9 @@ const OrdensServicoDashboard = () => {
         setReagendadas(reagendadasData.data);
         setEmDeslocamento(emDeslocamentoData.data);
 
-        // Verifica se há ordens em execução para exibir o ícone de ferramenta verde piscando
         setHasExecutionOrders(emExecucaoData.data.length > 0);
-        // Verifica se há ordens em deslocamento para exibir o ícone de carro laranja piscando
         setHasDeslocamentoOrders(emDeslocamentoData.data.length > 0);
 
-        // Extrai os técnicos e assuntos únicos para os filtros
         const allTechnicians = [
           ...new Set([
             ...agendadasData.data,
@@ -186,49 +184,14 @@ const OrdensServicoDashboard = () => {
     }
   };
 
-  const columns = [
-    {
-      title: 'Técnico',
-      dataIndex: 'tecnico',
-      key: 'tecnico',
-    },
-    {
-      title: 'Cliente',
-      dataIndex: 'razao',
-      key: 'razao',
-    },
-    {
-      title: 'Endereço',
-      dataIndex: 'endereco',
-      key: 'endereco',
-    },
-    {
-      title: 'Telefone',
-      dataIndex: 'telefone_celular',
-      key: 'telefone_celular',
-    },
-    {
-      title: 'Data Abertura',
-      dataIndex: 'data_abertura',
-      key: 'data_abertura',
-    },
-    {
-      title: 'Data Final',
-      dataIndex: 'data_final',
-      key: 'data_final',
-    },
-    {
-      title: 'Assunto',
-      dataIndex: 'assunto',
-      key: 'assunto',
-    },
-  ];
-
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
   const applyFilters = () => {
+    if (isDefaultSubjectChecked) {
+      localStorage.setItem('defaultSubject', selectedSubject);
+    }
     setAppliedFilters({
       status: selectedStatus,
       technician: selectedTechnician,
@@ -283,6 +246,44 @@ const OrdensServicoDashboard = () => {
     }
   };
 
+  const columns = [
+    {
+      title: 'Técnico',
+      dataIndex: 'tecnico',
+      key: 'tecnico',
+    },
+    {
+      title: 'Cliente',
+      dataIndex: 'razao',
+      key: 'razao',
+    },
+    {
+      title: 'Endereço',
+      dataIndex: 'endereco',
+      key: 'endereco',
+    },
+    {
+      title: 'Telefone',
+      dataIndex: 'telefone_celular',
+      key: 'telefone_celular',
+    },
+    {
+      title: 'Data Abertura',
+      dataIndex: 'data_abertura',
+      key: 'data_abertura',
+    },
+    {
+      title: 'Data Final',
+      dataIndex: 'data_final',
+      key: 'data_final',
+    },
+    {
+      title: 'Assunto',
+      dataIndex: 'assunto',
+      key: 'assunto',
+    },
+  ];
+
   return (
     <div className="ordens-servico-dashboard-container">
       <h2>Dashboard - Ordens de Serviço</h2>
@@ -316,8 +317,14 @@ const OrdensServicoDashboard = () => {
         </Select>
         <Select
           placeholder="Filtrar por assunto"
-          value={selectedSubject} // Mantém o valor pré-selecionado "Instalação"
-          onChange={(value) => setSelectedSubject(value)}
+          value={selectedSubject}
+          onChange={(value) => {
+            setSelectedSubject(value);
+            setAppliedFilters((prevFilters) => ({
+              ...prevFilters,
+              subject: value,
+            }));
+          }}
           style={{ width: 200, marginRight: 10 }}
         >
           <Option value="">Todos os assuntos</Option>
@@ -327,6 +334,13 @@ const OrdensServicoDashboard = () => {
             </Option>
           ))}
         </Select>
+        <Checkbox
+          checked={isDefaultSubjectChecked}
+          onChange={(e) => setIsDefaultSubjectChecked(e.target.checked)}
+          style={{ marginRight: 10 }}
+        >
+          Padrão de Pesquisa?
+        </Checkbox>
         <Button type="primary" onClick={applyFilters}>
           Aplicar Filtros
         </Button>
@@ -472,7 +486,7 @@ const OrdensServicoDashboard = () => {
       </Tabs>
       <Button
         type="primary"
-        onClick={() => handleCustomCommand('node /api_ixc/dashboard/updateData.js && node /api_ixc/dashboard/analisarAssuntos.js && node /api_ixc/dashboard/gerarRelatorioChamados.js && node /api_ixc/dashboard/gerarOrdensPorStatus.js')}
+        onClick={() => handleCustomCommand('node /api_ixc/dashboard/updateData.js && node /api_ixc/dashboard/analisarAssuntos.js && node /api_ixc/dashboard/gerarRelatorioChamados.js e node /api_ixc/dashboard/gerarOrdensPorStatus.js')}
         disabled={isButtonDisabled}
         icon={<ReloadOutlined />}
         style={{ marginTop: 20 }}
