@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Spin, message } from 'antd';
+import { Table, Spin, message, Button } from 'antd';
+import { CopyOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import './styles/BloqueadosDashboardVIRTELECOM.css';
 
@@ -44,6 +45,14 @@ const BloqueadosDashboardVIRTELECOM = () => {
     }
   };
 
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      message.success('Número copiado para a área de transferência!');
+    }).catch(() => {
+      message.error('Falha ao copiar o número.');
+    });
+  };
+
   const columns = [
     {
       title: 'Razão Social',
@@ -79,6 +88,11 @@ const BloqueadosDashboardVIRTELECOM = () => {
       title: 'Telefone',
       dataIndex: 'telefone',
       key: 'telefone',
+      render: (text) => (
+        <span>
+          {text} <Button type="link" icon={<CopyOutlined />} onClick={() => handleCopy(text)} />
+        </span>
+      ),
     },
   ];
 

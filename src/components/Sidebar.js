@@ -43,7 +43,7 @@ const Sidebar = ({ onLogout }) => {
     '/home/max-fibra/cadastro':[
     { name: 'Pagina inical', href: '/home' },
     ],
-    '/home/Dashboard-virtelecom':[
+    '/home/vir-telecom/Dashboard-virtelecom':[
       { name: 'Atalhos Vir Telecom', href: '/home/vir-telecom' },
       ], 
     '/home':[

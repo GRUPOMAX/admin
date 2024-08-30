@@ -11,7 +11,7 @@ const BloqueadosDashboardVIRTELECOM = React.lazy(() => import('./BloqueadosDashb
 const InativosDashboardVIRTELECOM = React.lazy(() => import('./InativosDashboardVIRTELECOM'));
 
 const HomeDashboard = () => {
-  const [selectedDashboard, setSelectedDashboard] = useState('canceladosVIRTELECOM');
+  const [selectedDashboard, setSelectedDashboard] = useState('ativosVIRTELECOM');
   const [refreshKey, setRefreshKey] = useState(0); // Usado para forçar a re-renderização
 
   // Efeito para reiniciar o dashboard automaticamente
@@ -44,7 +44,7 @@ const HomeDashboard = () => {
       <div className="dashboard-selector">
         <h3>Selecione o Dashboard</h3>
         <Select
-          defaultValue="canceladosVIRTELECOM"
+          defaultValue="ativosVIRTELECOM"
           style={{ width: 200 }}
           onChange={(value) => setSelectedDashboard(value)}
         >

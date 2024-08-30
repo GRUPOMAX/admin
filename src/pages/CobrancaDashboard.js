@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Pagination } from 'antd';
+import { Input, Pagination, Button, message } from 'antd';
+import { CopyOutlined } from '@ant-design/icons';
 import './styles/CobrancaDashboard.css';
 
 const { Search } = Input;
-console.log(`Largura: ${window.innerWidth}px, Altura: ${window.innerHeight}px`);
 
 const CobrancaDashboard = React.memo(() => {
   const [clientes, setClientes] = useState([]);
@@ -11,7 +11,7 @@ const CobrancaDashboard = React.memo(() => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(15); // Define 15 itens por página
+  const [pageSize] = useState(10); // Define 10 itens por página
 
   useEffect(() => {
     const fetchClientes = async () => {
@@ -45,25 +45,30 @@ const CobrancaDashboard = React.memo(() => {
     setCurrentPage(page);
   };
 
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      message.success('Número copiado para a área de transferência!');
+    }).catch(() => {
+      message.error('Falha ao copiar o número.');
+    });
+  };
+
+  const getColorForBlockedClients = (total) => {
+    if (total > 50) {
+      return 'red';
+    } else if (total > 20) {
+      return 'orange';
+    } else {
+      return 'green';
+    }
+  };
+
+  const totalBlocked = filteredClientes.length;
+
   // Calcula o índice inicial e final dos clientes que devem ser exibidos na página atual
   const indexOfLastCliente = currentPage * pageSize;
   const indexOfFirstCliente = indexOfLastCliente - pageSize;
   const currentClientes = filteredClientes.slice(indexOfFirstCliente, indexOfLastCliente);
-
-  useEffect(() => {
-    const handlePrintShortcut = (e) => {
-      if (e.ctrlKey && e.key === 'p') {
-        e.preventDefault();
-        window.print(); // Força a impressão
-      }
-    };
-
-    window.addEventListener('keydown', handlePrintShortcut);
-
-    return () => {
-      window.removeEventListener('keydown', handlePrintShortcut);
-    };
-  }, []);
 
   if (loading) {
     return <div>Carregando...</div>;
@@ -78,7 +83,18 @@ const CobrancaDashboard = React.memo(() => {
         onChange={(e) => setSearchTerm(e.target.value)}
         enterButton
       />
-      <p>Total de clientes bloqueados: {filteredClientes.length}</p>
+      <p>Total de clientes bloqueados: {totalBlocked} 
+        <span 
+          style={{
+            display: 'inline-block',
+            width: '10px',
+            height: '10px',
+            borderRadius: '50%',
+            backgroundColor: getColorForBlockedClients(totalBlocked),
+            marginLeft: '10px'
+          }}
+        />
+      </p>
       <table className="clientes-table">
         <thead>
           <tr>
@@ -95,8 +111,16 @@ const CobrancaDashboard = React.memo(() => {
               <td>{cliente.id_cliente}</td>
               <td>{cliente.razao}</td>
               <td>{cliente.endereco}</td>
-              <td>{cliente.telefone_celular}</td>
-              <td>{cliente.telefone_comercial || 'N/A'}</td>
+              <td>
+                {cliente.telefone_celular}{' '}
+                <Button type="link" icon={<CopyOutlined />} onClick={() => handleCopy(cliente.telefone_celular)} />
+              </td>
+              <td>
+                {cliente.telefone_comercial || 'SEM CONTATO'}{' '}
+                {cliente.telefone_comercial && (
+                  <Button type="link" icon={<CopyOutlined />} onClick={() => handleCopy(cliente.telefone_comercial)} />
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

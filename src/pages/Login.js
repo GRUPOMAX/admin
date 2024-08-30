@@ -73,44 +73,47 @@ const Login = ({ onLogin }) => {
   const handleLogin = async (values) => {
     setLoading(true);
     try {
-      const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records', {
-        params: {
-          where: `(username,eq,${values.username})`,
-        },
-        headers: {
-          'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
-        },
-      });
+        const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records', {
+            params: {
+                where: `(username,eq,${values.username})`,
+            },
+            headers: {
+                'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            },
+        });
 
-      console.log('Dados retornados do NocoDB:', data);
+        console.log('Dados retornados do NocoDB:', data);
 
-      if (data.list.length > 0) {
-        const user = data.list[0];
-        if (user.password === values.password) {
-          const userProfile = {
-            id: user.Id,
-            name: user.name || user.username,
-            email: user.email,
-            profilePic: user.profilePicUrl,
-            Cargo1: user.Cargo1,
-          };
+        if (data.list.length > 0) {
+            const user = data.list[0];
+            if (user.password === values.password) {
+                const userProfile = {
+                    id: user.Id, // Certifique-se de que "Id" está correto
+                    name: user.name || user.username,
+                    email: user.email,
+                    profilePic: user.profilePicUrl,
+                    Cargo1: user.Cargo1,
+                };
 
-          await updateOnlineStatus(userProfile, true); // Atualiza o status para online
-          onLogin(userProfile);
-          navigate('/home');
+                console.log('userProfile criado:', userProfile);
+
+                await updateOnlineStatus(userProfile, true); // Atualiza o status para online
+                onLogin(userProfile); // Passa os dados do usuário para o componente pai
+                navigate('/home');
+            } else {
+                message.error('Senha incorreta.');
+            }
         } else {
-          message.error('Senha incorreta.');
+            message.error('Usuário não encontrado.');
         }
-      } else {
-        message.error('Usuário não encontrado.');
-      }
     } catch (error) {
-      console.error('Erro na autenticação:', error);
-      message.error('Erro na autenticação.');
+        console.error('Erro na autenticação:', error);
+        message.error('Erro na autenticação.');
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
+
 
   const handleLogout = async (user) => {
     try {

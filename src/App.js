@@ -19,6 +19,7 @@ import SendNotification from './components/SendNotification';
 import UsuariosOnline from './components/UsuariosOnline';
 import DetalhesDispositivos from './pages/DetalhesDispositivos'; // Importe a nova página
 import HomeDashBoard from './pages/HomeDashboard';
+import Notes from './components/Notes';
 
 
 
@@ -182,6 +183,7 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/send-notification" element={<SendNotification userProfile={userProfile} />} />
         <Route path="/usuarios-online" element={<UsuariosOnline userProfile={userProfile}/>} />
         <Route path="/vir-telecom/Dashboard-virtelecom" element={<HomeDashBoard userProfile={userProfile}/>} />
+        <Route path="/notas" element={<Notes userProfile={userProfile}/>} />
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </div>

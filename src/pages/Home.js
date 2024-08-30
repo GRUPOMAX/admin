@@ -13,16 +13,41 @@ const OrdensServicoDashboard = React.lazy(() => import('./OrdensServicoDashboard
 const Home = () => {
   const [selectedDashboard, setSelectedDashboard] = useState('analiseTecnica');
   const [refreshKey, setRefreshKey] = useState(0); // Usado para forçar a re-renderização
+  const [blockedClientsCount, setBlockedClientsCount] = useState(0); // Estado para o número de clientes bloqueados
 
   // Efeito para reiniciar o dashboard automaticamente
   useEffect(() => {
     const interval = setInterval(() => {
-      // Atualiza a chave de reinicialização, forçando a re-renderização
-      setRefreshKey((prevKey) => prevKey + 1);
+      setRefreshKey((prevKey) => prevKey + 1); // Atualiza a chave de reinicialização, forçando a re-renderização
     }, 60000); // Reinicia a cada 60 segundos
 
     return () => clearInterval(interval); // Limpa o intervalo ao desmontar o componente
   }, []);
+
+  useEffect(() => {
+    // Fetch the blocked clients count when the component mounts
+    const fetchBlockedClientsCount = async () => {
+      try {
+        const response = await fetch('https://apidoixc.nexusnerds.com.br/Data/ClientesBloquados.json');
+        const data = await response.json();
+        setBlockedClientsCount(data.length); // Supondo que o JSON contém uma lista de clientes bloqueados
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    };
+
+    fetchBlockedClientsCount();
+  }, []);
+
+  const getColorForBlockedClients = (total) => {
+    if (total > 50) {
+      return 'red';
+    } else if (total > 20) {
+      return 'orange';
+    } else {
+      return 'green';
+    }
+  };
 
   const renderDashboard = useCallback(() => {
     switch (selectedDashboard) {
@@ -49,7 +74,20 @@ const Home = () => {
           onChange={(value) => setSelectedDashboard(value)}
         >
           <Option value="analiseTecnica">Análise Técnica</Option>
-          <Option value="cobranca">Cobrança</Option>
+          <Option value="cobranca">
+            Cobrança
+            <span 
+              className="blinking-dot"
+              style={{
+                display: 'inline-block',
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                backgroundColor: getColorForBlockedClients(blockedClientsCount),
+                marginLeft: '10px'
+              }}
+            />
+          </Option>
           <Option value="financeiro">Financeiro</Option>
           <Option value="ordensServico">Ordens de Serviço</Option>
         </Select>
