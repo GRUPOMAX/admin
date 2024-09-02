@@ -1,0 +1,83 @@
+/* src/pages/MaxFibra.css */
+.max-fibra {
+  display: flex;
+  flex-direction: column; /* Coluna para organizar melhor em telas menores */
+  padding-left: 5%;
+
+  padding-left: 10%;
+
+  padding-top: 7%; /* Ajuste conforme necessário */
+}
+
+.content-max-fibra {
+  padding: 20px;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
+}
+
+h2 {
+  padding-left: 1%;
+  font-size: 1.5em; /* Tamanho do título */
+  color: #333;
+}
+
+.link-container-max-fibra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espaçamento entre os itens */
+  padding-left: 1%;
+}
+
+.link-item img {
+  width: 100%; /* Faz a imagem ocupar toda a largura do Card */
+  height: 150px; /* Define uma altura fixa */
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+}
+
+
+
+
+/* Media Query para telas com largura de 1440px */
+@media (min-width: 1440px) {
+  .max-fibra {
+    padding-left: 12%;
+    padding-top: 5%;
+  }
+}
+
+
+
+/* Media Query para telas com largura de 1897px */
+@media (min-width: 1897px) {
+  .max-fibra {
+    padding-left: 10%;
+    padding-top: 5%;
+  }
+}
+
+
+/* Media Query para telas menores */
+@media (max-width: 768px) {
+  .max-fibra {
+    padding-left: 45%; /* Ajuste o padding para se adaptar a telas menores */
+    padding-top: 50%; /* Diminua o padding-top para telas menores */
+  }
+
+  .content-max-fibra {
+    padding: 10px;
+  }
+
+  .link-container-max-fibra {
+    gap: 10px; /* Diminua o espaçamento entre os itens */
+  }
+
+  h2 {
+    padding-left: 2%;
+    font-size: 1.2em; /* Ajuste o tamanho do título */
+  }
+
+  .link-item img {
+    height: 100px; /* Ajuste a altura das imagens */
+  }
+}

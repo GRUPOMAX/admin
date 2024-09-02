@@ -25,6 +25,8 @@ import Tasks from './components/Tasks';
 import MonitorVPS from './components/MonitorVPS';
 import GalleryPage from './GalleryPage';
 import PaginaEmpresas from './components/PaginaEmpresas';
+import Fechamento from './pages/fechamento';
+import Relatorios from './pages/Relatorios';
 
 
 
@@ -221,6 +223,8 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/tarefas" element={<Tasks userProfile={userProfile}/>} />
         <Route path="/monitor-vps" element={<MonitorVPS userProfile={userProfile}/>} />
         <Route path="/galeria" element={<GalleryPage userProfile={userProfile}/>} />
+        <Route path="/relatorio-fechamento" element={<Relatorios userProfile={userProfile}/>} />
+        <Route path="/fechamento" element={<Fechamento userProfile={userProfile}/>} />
         <Route path="/paginaEmpresa" element={<PaginaEmpresas userProfile={userProfile}/>} />
 
 

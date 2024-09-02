@@ -14,6 +14,22 @@ const Login = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Função que gera a saudação baseada na hora do dia
+  const getGreetingMessage = (username) => {
+    const currentHour = new Date().getHours();
+    let greeting;
+
+    if (currentHour < 12) {
+      greeting = 'Bom dia';
+    } else if (currentHour < 18) {
+      greeting = 'Boa tarde';
+    } else {
+      greeting = 'Boa noite';
+    }
+
+    return `${greeting}, ${username}! Bem-vindo(a) de volta!`;
+  };
+
   useEffect(() => {
     const fetchBackground = async () => {
       try {
@@ -100,6 +116,11 @@ const Login = ({ onLogin }) => {
 
                 await updateOnlineStatus(userProfile, true); // Atualiza o status para online
                 onLogin(userProfile); // Passa os dados do usuário para o componente pai
+
+                // Adiciona a saudação aqui
+                const greetingMessage = getGreetingMessage(userProfile.name || userProfile.username);
+                message.success(greetingMessage);
+
                 navigate('/home');
             } else {
                 message.error('Senha incorreta.');

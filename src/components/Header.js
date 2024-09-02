@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Avatar, Dropdown, Menu, Badge, Button, message } from 'antd';
-import { UserOutlined, LogoutOutlined, EditOutlined, UserAddOutlined, SettingOutlined, BellOutlined, AppstoreOutlined, SwapOutlined, SendOutlined, LaptopOutlined, FileTextOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, EditOutlined, UserAddOutlined, SettingOutlined, BellOutlined, AppstoreOutlined, FileDoneOutlined,SwapOutlined, SendOutlined, LaptopOutlined, FileTextOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../firebaseConfig';
 import { doc, onSnapshot } from "firebase/firestore";
@@ -173,6 +173,9 @@ const Header = ({ userProfile, onLogout }) => {
       case 'galeria':
         navigate('/home/galeria');
         break;
+      case 'reisServiceFechamento':
+          navigate('/home/relatorio-fechamento');
+          break;
       case 'logout':
         onLogout();
         break;
@@ -258,6 +261,9 @@ const Header = ({ userProfile, onLogout }) => {
           <Menu.Item key="usuariosOnline" icon={<UserOutlined />}>
             Usuários Online
           </Menu.Item>
+          <Menu.Item key="reisServiceFechamento" icon={<FileDoneOutlined />}>
+          Reis Service - Fechamento
+        </Menu.Item>
         </>
       )}
       {userProfile.Cargo1 === 'Desenvolvedor' && (
