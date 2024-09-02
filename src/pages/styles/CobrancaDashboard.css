@@ -1,4 +1,4 @@
-.cobranca-dashboard-container {
+.cobranca-dashboard-custom-container {
   position: absolute;
   top: 8vw;
   left: 34vh;
@@ -8,77 +8,75 @@
   box-sizing: border-box;
   z-index: 1;
 }
-  
-  
-  .cobranca-dashboard-container h2 {
-    text-align: left;
-    color: #0089fa;
-    margin-left: 50vh;
-  }
-  .cobranca-dashboard-container p {
-    text-align: left;
-    color: #0089fa;
-    margin-left: 50vh;
-  }
-  
-  .clientes-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .clientes-table, .clientes-table th, .clientes-table td {
-    border: 1px solid #018ae6;
-  }
-  
-  .clientes-table th, .clientes-table td {
-    padding: 12px;
-    text-align: left;
-  }
-  
-  .clientes-table th {
-    background-color: #0080ff;
-  }
-  
-  .clientes-table tr:nth-child(even) {
-    background-color: #ffffff;
-  }
-  
-  .clientes-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  input.ant-input {
-    border-radius: 4px;
-  }
-  
-  input.ant-input:focus {
-    border-color: #1890ff;
-  }
-  
-  .ant-pagination {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .ant-pagination-item-active {
-    background-color: #1890ff;
-    border-color: #1890ff;
-  }
-  
-  .ant-pagination-item:hover {
-    border-color: #1890ff;
-  }
-  
-  .ant-pagination-item-link {
-    border-radius: 4px;
-  }
-  
 
+.cobranca-dashboard-custom-container h2 {
+  text-align: left;
+  color: #0089fa;
+  margin-left: 50vh;
+}
+
+.cobranca-dashboard-custom-container p {
+  text-align: left;
+  color: #0089fa;
+  margin-left: 50vh;
+}
+
+.clientes-table-custom {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.clientes-table-custom, .clientes-table-custom th, .clientes-table-custom td {
+  border: 1px solid #018ae6;
+}
+
+.clientes-table-custom th, .clientes-table-custom td {
+  padding: 12px;
+  text-align: left;
+}
+
+.clientes-table-custom th {
+  background-color: #0080ff;
+}
+
+.clientes-table-custom tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.clientes-table-custom tr:hover {
+  background-color: #f1f1f1;
+}
+
+input.ant-input {
+  border-radius: 4px;
+}
+
+input.ant-input:focus {
+  border-color: #1890ff;
+}
+
+.ant-pagination-custom {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ant-pagination-item-active-custom {
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+
+.ant-pagination-item-hover-custom {
+  border-color: #1890ff;
+}
+
+.ant-pagination-item-link-custom {
+  border-radius: 4px;
+}
 
 /* Ajuste para telas com largura de 1552px */
 @media (width: 1552px) {
-  .cobranca-dashboard-container {
+  .cobranca-dashboard-custom-container {
     position: absolute;
     top: 8vw;
     left: 34vh;
@@ -87,48 +85,44 @@
     padding: 20px;
     box-sizing: border-box;
     z-index: 1;
-}
+  }
 
-  .cobranca-dashboard-container h2 {
+  .cobranca-dashboard-custom-container h2 {
     text-align: left;
     color: #0089fa;
     margin-left: 50vh;
   }
 
-  .cobranca-dashboard-container p {
+  .cobranca-dashboard-custom-container p {
     text-align: center;
     color: #0089fa;
     margin-left: 54vh;
   }
 
-  .clientes-table {
+  .clientes-table-custom {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
 
-  .clientes-table,
-  .clientes-table th,
-  .clientes-table td {
+  .clientes-table-custom, .clientes-table-custom th, .clientes-table-custom td {
     border: 1px solid #018ae6;
-
   }
 
-  .clientes-table th,
-  .clientes-table td {
+  .clientes-table-custom th, .clientes-table-custom td {
     padding: 12px;
     text-align: left;
   }
 
-  .clientes-table th {
+  .clientes-table-custom th {
     background-color: #0080ff;
   }
 
-  .clientes-table tr:nth-child(even) {
+  .clientes-table-custom tr:nth-child(even) {
     background-color: #f9f9f9;
   }
 
-  .clientes-table tr:hover {
+  .clientes-table-custom tr:hover {
     background-color: #f1f1f1;
   }
 
@@ -142,14 +136,14 @@
   }
 
   /* Ajuste específico para os botões */
-  .action-buttons {
+  .action-buttons-custom {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
     padding-right: 20px;
   }
 
-  .action-buttons button {
+  .action-buttons-custom button {
     background-color: #0080ff;
     border: none;
     color: white;
@@ -161,30 +155,30 @@
     transition: background-color 0.3s ease;
   }
 
-  .action-buttons button:hover {
+  .action-buttons-custom button:hover {
     background-color: #006bbf;
   }
 
-  .action-buttons button:focus {
+  .action-buttons-custom button:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 128, 255, 0.7);
   }
 
-  .ant-pagination {
+  .ant-pagination-custom {
     margin-top: 20px;
     text-align: right;
   }
 
-  .ant-pagination-item-active {
+  .ant-pagination-item-active-custom {
     background-color: #1890ff;
     border-color: #1890ff;
   }
 
-  .ant-pagination-item:hover {
+  .ant-pagination-item-hover-custom {
     border-color: #1890ff;
   }
 
-  .ant-pagination-item-link {
+  .ant-pagination-item-link-custom {
     border-radius: 4px;
   }
 
@@ -192,7 +186,7 @@
     display: flex;
     align-items: center;
   }
-  
+
   .custom-search .ant-input-group {
     display: flex;
     width: 20%;
@@ -200,48 +194,27 @@
     margin-top: -10px;
     padding: 10px;
   }
-  
+
   .custom-search .ant-input-group .ant-input,
   .custom-search .ant-input-group .ant-btn {
-    height: 40px; /* Certifique-se de que o input e o botão tenham a mesma altura */
-    border-radius: 20px; /* Mantém o estilo arredondado */
+    height: 40px;
+    border-radius: 20px;
   }
-    /* Aumentando a especificidade com o uso de !important */
-    .ant-table-thead > tr > th {
-      background: #047ff3 !important;
-      border-bottom: 1px solid #f0f0f0 !important;
-      color: #ffffff !important;
-      font-weight: bold !important;
-      text-align: center !important;
-    }
-    /* Forçando o estilo com especificidade adicional */
-.ant-table-wrapper .ant-table-thead > tr > th {
-  background: #047ff3 !important;
-  border-bottom: 1px solid #f0f0f0 !important;
-  color: #ffffff !important;
-  font-weight: bold !important;
-  text-align: center !important;
-}
 
-
-
-  
   .custom-search .ant-input-group .ant-input {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  
+
   .custom-search .ant-input-group .ant-btn {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  
 }
 
-
-/* Ajuste para telas com largura de 1552px */
+/* Ajuste para telas com largura de 1592px */
 @media (width: 1592px) {
-  .cobranca-dashboard-container {
+  .cobranca-dashboard-custom-container {
     position: absolute;
     top: 8vw;
     left: 34vh;
@@ -250,47 +223,44 @@
     padding: 20px;
     box-sizing: border-box;
     z-index: 1;
-}
+  }
 
-  .cobranca-dashboard-container h2 {
+  .cobranca-dashboard-custom-container h2 {
     text-align: left;
     color: #0089fa;
     margin-left: 50vh;
   }
 
-  .cobranca-dashboard-container p {
+  .cobranca-dashboard-custom-container p {
     text-align: left;
     color: #0089fa;
     margin-left: 54vh;
   }
 
-  .clientes-table {
+  .clientes-table-custom {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
 
-  .clientes-table,
-  .clientes-table th,
-  .clientes-table td {
+  .clientes-table-custom, .clientes-table-custom th, .clientes-table-custom td {
     border: 1px solid #018ae6;
   }
 
-  .clientes-table th,
-  .clientes-table td {
+  .clientes-table-custom th, .clientes-table-custom td {
     padding: 12px;
     text-align: left;
   }
 
-  .clientes-table th {
+  .clientes-table-custom th {
     background-color: #0080ff;
   }
 
-  .clientes-table tr:nth-child(even) {
+  .clientes-table-custom tr:nth-child(even) {
     background-color: #f9f9f9;
   }
 
-  .clientes-table tr:hover {
+  .clientes-table-custom tr:hover {
     background-color: #f1f1f1;
   }
 
@@ -304,14 +274,14 @@
   }
 
   /* Ajuste específico para os botões */
-  .action-buttons {
+  .action-buttons-custom {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
     padding-right: 20px;
   }
 
-  .action-buttons button {
+  .action-buttons-custom button {
     background-color: #0080ff;
     border: none;
     color: white;
@@ -323,30 +293,30 @@
     transition: background-color 0.3s ease;
   }
 
-  .action-buttons button:hover {
+  .action-buttons-custom button:hover {
     background-color: #006bbf;
   }
 
-  .action-buttons button:focus {
+  .action-buttons-custom button:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 128, 255, 0.7);
   }
 
-  .ant-pagination {
+  .ant-pagination-custom {
     margin-top: 20px;
     text-align: center;
   }
 
-  .ant-pagination-item-active {
+  .ant-pagination-item-active-custom {
     background-color: #1890ff;
     border-color: #1890ff;
   }
 
-  .ant-pagination-item:hover {
+  .ant-pagination-item-hover-custom {
     border-color: #1890ff;
   }
 
-  .ant-pagination-item-link {
+  .ant-pagination-item-link-custom {
     border-radius: 4px;
   }
 
@@ -354,7 +324,7 @@
     display: flex;
     align-items: center;
   }
-  
+
   .custom-search .ant-input-group {
     display: flex;
     width: 20%;
@@ -362,24 +332,20 @@
     margin-top: -10px;
     padding: 10px;
   }
-  
+
   .custom-search .ant-input-group .ant-input,
   .custom-search .ant-input-group .ant-btn {
-    height: 40px; /* Certifique-se de que o input e o botão tenham a mesma altura */
-    border-radius: 20px; /* Mantém o estilo arredondado */
+    height: 40px;
+    border-radius: 20px;
   }
-  
+
   .custom-search .ant-input-group .ant-input {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  
+
   .custom-search .ant-input-group .ant-btn {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  
 }
-
-  /* styles/CobrancaDashboard.css */
-

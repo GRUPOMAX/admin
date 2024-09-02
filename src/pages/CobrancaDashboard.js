@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Input, Pagination, Button, message } from 'antd';
 import { CopyOutlined } from '@ant-design/icons';
+import * as XLSX from 'xlsx';
 import './styles/CobrancaDashboard.css';
 
 const { Search } = Input;
@@ -70,12 +71,22 @@ const CobrancaDashboard = React.memo(() => {
   const indexOfFirstCliente = indexOfLastCliente - pageSize;
   const currentClientes = filteredClientes.slice(indexOfFirstCliente, indexOfLastCliente);
 
+  const exportToExcel = () => {
+    // Criando uma nova lista de clientes sem a propriedade "endereco"
+    const clientesSemEndereco = filteredClientes.map(({ endereco, ...rest }) => rest);
+
+    const worksheet = XLSX.utils.json_to_sheet(clientesSemEndereco);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Clientes Bloqueados");
+    XLSX.writeFile(workbook, "clientes_bloqueados.xlsx");
+  };
+
   if (loading) {
     return <div>Carregando...</div>;
   }
 
   return (
-    <div className="cobranca-dashboard-container">
+    <div className="cobranca-dashboard-custom-container">
       <h2>Clientes Bloqueados</h2>
       <Search
         className="custom-search"
@@ -95,12 +106,11 @@ const CobrancaDashboard = React.memo(() => {
           }}
         />
       </p>
-      <table className="clientes-table">
+      <table className="clientes-table-custom">
         <thead>
           <tr>
             <th>ID Cliente</th>
             <th>Razão Social</th>
-            <th>Endereço</th>
             <th>Telefone Celular</th>
             <th>Telefone Comercial</th>
           </tr>
@@ -110,7 +120,6 @@ const CobrancaDashboard = React.memo(() => {
             <tr key={cliente.id_cliente}>
               <td>{cliente.id_cliente}</td>
               <td>{cliente.razao}</td>
-              <td>{cliente.endereco}</td>
               <td>
                 {cliente.telefone_celular}{' '}
                 <Button type="link" icon={<CopyOutlined />} onClick={() => handleCopy(cliente.telefone_celular)} />
@@ -132,6 +141,10 @@ const CobrancaDashboard = React.memo(() => {
         onChange={handlePageChange}
         style={{ marginTop: 20, textAlign: 'center' }}
       />
+
+      <Button type="primary" onClick={exportToExcel} className="button-download-custom">
+        Baixar Excel
+      </Button>
     </div>
   );
 });

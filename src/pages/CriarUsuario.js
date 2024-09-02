@@ -16,17 +16,22 @@ const CriarUsuario = () => {
   const handleSubmit = (values) => {
     setLoading(true);
 
+    const payload = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+      Cargo1: values.Cargo1,
+      username: values.username,
+      profilePicUrl: profilePicUrl,
+      empresa: values.empresa,
+    };
+
+    console.log('Payload enviado:', payload); // Adicione este log para inspecionar o payload
+
     axios
       .post(
         'https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records',
-        {
-          name: values.name,
-          email: values.email,
-          password: values.password,
-          Cargo1: values.Cargo1,
-          username: values.username,
-          profilePicUrl: profilePicUrl,
-        },
+        payload,
         {
           headers: {
             'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
@@ -34,11 +39,12 @@ const CriarUsuario = () => {
         }
       )
       .then((response) => {
+        console.log('Resposta da API:', response.data); // Log da resposta da API
         message.success('Usuário criado com sucesso!');
         form.resetFields();
       })
       .catch((error) => {
-        console.error('Erro ao criar usuário:', error);
+        console.error('Erro ao criar usuário:', error.response?.data || error.message); // Log do erro detalhado
         message.error('Erro ao criar usuário.');
       })
       .finally(() => {
@@ -58,6 +64,7 @@ const CriarUsuario = () => {
           password: '',
           username: '',
           Cargo1: '',
+          empresa: '', // Valor inicial para a seleção única de empresa
         }}
       >
         <Form.Item
@@ -97,6 +104,17 @@ const CriarUsuario = () => {
             <Select.Option value="Administrador">Administrador</Select.Option>
             <Select.Option value="Financeiro">Financeiro</Select.Option>
             <Select.Option value="Vendedor">Vendedor</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item
+          label="Empresa"
+          name="empresa"
+          rules={[{ required: true, message: 'Por favor, selecione uma empresa!' }]}
+        >
+          <Select placeholder="Selecione a empresa">
+            <Select.Option value="Max Fibra">Max Fibra</Select.Option>
+            <Select.Option value="Vir Telecom">Vir Telecom</Select.Option>
+            <Select.Option value="Reis Services">Reis Services</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item label="Upload de Foto">

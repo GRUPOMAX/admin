@@ -1,6 +1,30 @@
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL, deleteObject  } from 'firebase/storage';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc, setDoc } from 'firebase/firestore'; // Certifique-se de importar getDoc e setDoc
 import { storage, db } from './firebaseConfig';
+
+
+
+
+// Função para verificar e criar o documento do usuário no Firestore
+export const ensureUserDocumentExists = async (userId) => {
+  const userDocRef = doc(db, 'users', String(userId));
+  const userDocSnap = await getDoc(userDocRef);
+
+  if (!userDocSnap.exists()) {
+    // Documento não existe, vamos criá-lo
+    try {
+      await setDoc(userDocRef, {
+        companies: [] // ou qualquer estrutura inicial que você deseja
+      });
+      console.log(`Documento criado para o usuário ${userId}`);
+    } catch (error) {
+      console.error(`Erro ao criar documento para o usuário ${userId}:`, error);
+      throw error;
+    }
+  } else {
+    console.log(`Documento já existe para o usuário ${userId}`);
+  }
+};
 
 // Função para fazer upload de imagem no Firebase Storage
 export const uploadImageToFirebase = (file) => {
@@ -98,5 +122,70 @@ export const getBackgroundConfig = async () => {
     }
   } catch (error) {
     throw new Error('Erro ao obter configuração de fundo: ' + error.message);
+  }
+};
+
+
+
+export const getMultiShortcutsFromFirestore = async (userId) => {
+  try {
+    const multiShortcutsRef = collection(db, 'users', userId, 'multiShortcuts');
+    const snapshot = await getDocs(multiShortcutsRef);
+    const multiShortcuts = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    return multiShortcuts;
+  } catch (error) {
+    console.error("Erro ao buscar multi atalhos: ", error);
+    throw error;
+  }
+};
+
+
+
+// Função para obter imagens do Firestore
+export const getImagesFromFirestore = async () => {
+  try {
+    const imagesRef = collection(db, 'galleryImages'); // Supondo que você tenha uma coleção chamada 'galleryImages'
+    const snapshot = await getDocs(imagesRef);
+    const images = snapshot.docs.map(doc => ({
+      id: doc.id,
+      url: doc.data().url, // A URL da imagem armazenada no Firestore
+      label: doc.data().label || `Imagem ${doc.id}` // Nome ou label da imagem
+    }));
+    return images;
+  } catch (error) {
+    console.error("Erro ao buscar imagens da galeria: ", error);
+    throw error;
+  }
+};
+
+// Função para salvar imagens na coleção 'galleryImages' com o nome
+export const saveImageToFirestore = async (imageUrl, imageName) => {
+  try {
+    const docRef = await addDoc(collection(db, 'galleryImages'), { 
+      url: imageUrl,
+      label: imageName // Salvando o nome da imagem no campo 'label'
+    });
+    return docRef.id;
+  } catch (error) {
+    console.error("Erro ao salvar imagem na galeria: ", error);
+    throw error;
+  }
+};
+
+export const deleteImageFromFirestore = async (imageId, imageUrl) => {
+  try {
+    // Deleta o documento do Firestore
+    await deleteDoc(doc(db, 'galleryImages', imageId));
+
+    // Deleta a imagem do Firebase Storage
+    const storageRef = ref(storage, imageUrl);
+    await deleteObject(storageRef);
+
+  } catch (error) {
+    console.error("Erro ao apagar a imagem: ", error);
+    throw error;
   }
 };

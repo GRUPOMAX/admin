@@ -7,6 +7,15 @@
   padding: 20px;
 }
 
+.atalho-container {
+  display: flex;
+  justify-content: center; /* Centraliza os atalhos no container */
+  align-items: flex-start; /* Alinha ao topo do container */
+  flex-wrap: wrap; /* Permite que os atalhos ocupem mais de uma linha se necessário */
+  gap: 20px; /* Espaçamento entre os atalhos */
+  padding: 20px; /* Espaçamento interno do container */
+}
+
 .atalhos-list {
   display: flex;
   flex-wrap: wrap;
@@ -16,19 +25,20 @@
 }
 
 .atalho-item {
-  text-align: center;
-  flex: 1 1 calc(33.33% - 30px); /* Ajustei o cálculo para considerar o novo gap */
-  min-width: 250px;
-  max-width: 300px;
-  box-sizing: border-box;
+  flex: 0 1 45%; /* Ocupa aproximadamente 45% da largura disponível */
+  max-width: 500px; /* Largura máxima */
+  min-width: 300px; /* Largura mínima */
+  margin: 10px; /* Margem entre os itens */
+  box-sizing: border-box; /* Considera o padding e a borda na largura e altura */
 }
 
 .atalho-item img {
-  max-width: 300px;
+  max-width: 100%; /* Garante que a imagem se ajuste ao tamanho do container */
   max-height: 300px;
   border-radius: 5px;
   object-fit: cover;
 }
+
 
 .atalho-item p {
   margin-top: 10px;

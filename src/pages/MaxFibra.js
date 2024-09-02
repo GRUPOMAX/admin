@@ -5,6 +5,7 @@ import './styles/MaxFibra.css';
 
 const accessPermissions = {
   Administrador: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca'],
+  Desenvolvedor: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca'],
   Financeiro: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'Secullum', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT', 'OpaSuite', 'CredLocaliza','SSA'],
   Vendedor: ['Canva', 'Gmail', 'Trello'],
 };

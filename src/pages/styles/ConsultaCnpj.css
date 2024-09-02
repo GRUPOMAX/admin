@@ -1,15 +1,59 @@
-/* src/styles/ConsultaCnpj.css */
 .consulta-cnpj-container {
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #f4f7f9;
+  width: 100%;
+}
+
+.ant-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  border: none;
+  max-width: 600px; /* Diminui o limite máximo de largura para 600px */
+}
+
+.ant-card-body {
+  padding: 40px;
+}
+
+.ant-typography {
+  color: #333;
+}
+
+.ant-form-item-label > label {
+  font-weight: 500;
+  color: #555;
+}
+
+.ant-input {
+  height: 45px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  font-size: 16px;
+}
+
+.ant-btn-primary {
+  height: 45px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.ant-btn-primary:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
 }
 
 .company-data {
   margin-top: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .company-data ul {
@@ -19,4 +63,6 @@
 .footer {
   margin-top: 20px;
   font-size: 12px;
+  text-align: center;
+  color: #999;
 }

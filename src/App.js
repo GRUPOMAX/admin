@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import MaxFibra from './pages/MaxFibra';
+import CompanySelector from './components/CompanySelector';
 import VirTelecom from './pages/VirTelecom';
 import ReisServices from './pages/ReisServices';
 import Contact from './pages/Contact';
@@ -20,6 +21,10 @@ import UsuariosOnline from './components/UsuariosOnline';
 import DetalhesDispositivos from './pages/DetalhesDispositivos'; // Importe a nova página
 import HomeDashBoard from './pages/HomeDashboard';
 import Notes from './components/Notes';
+import Tasks from './components/Tasks';
+import MonitorVPS from './components/MonitorVPS';
+import GalleryPage from './GalleryPage';
+import PaginaEmpresas from './components/PaginaEmpresas';
 
 
 
@@ -40,6 +45,8 @@ const App = () => {
 
   const location = useLocation();
 
+  
+
   useEffect(() => {
     const isLoginPage = location.pathname === '/' || location.pathname === '/login';
     if (isLoginPage) {
@@ -49,6 +56,29 @@ const App = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    const checkTimers = () => {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      const now = new Date().getTime();
+      tasks.forEach(task => {
+        if (task.timerEnd) {
+          const timeRemaining = task.timerEnd - now;
+          if (timeRemaining <= 0) {
+            // Toca o alarme
+            const audio = new Audio('/alert.mp3');
+            audio.play();
+            // Atualiza o localStorage para remover o timer concluído
+            task.timerEnd = null;
+          }
+        }
+      });
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
+
+    const interval = setInterval(checkTimers, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  
   const updateOnlineStatus = async (isOnline) => {
     if (userProfile) {
       const now = new Date().toISOString();
@@ -61,6 +91,7 @@ const App = () => {
         profilePicUrl: userProfile.profilePic,
         isOnline: isOnline,
         lastActiveAt: now,
+        empresa: userProfile.empresa
       };
   
       try {
@@ -102,6 +133,7 @@ const App = () => {
         profilePicUrl: userProfile.profilePic,
         isOnline: false,
         lastActiveAt: now,
+        empresa: userProfile.empresa
       };
   
       try {
@@ -135,10 +167,9 @@ const App = () => {
   return (
     <div className={`App ${location.pathname === '/cadastro' ? 'cadastro-page' : ''}`}>
       {isAuthenticated && userProfile && <Header userProfile={userProfile} onLogout={handleLogout} />}
+
       <Routes>
-        {!isAuthenticated ? (
-          <Route path="*" element={<Login onLogin={handleLogin} />} />
-        ) : (
+        {isAuthenticated && userProfile ? (
           <>
             <Route
               path="/home/*"
@@ -152,14 +183,17 @@ const App = () => {
             />
             <Route path="*" element={<Navigate to="/home" replace />} />
           </>
+        ) : (
+          <Route path="*" element={<Login onLogin={handleLogin} />} />
         )}
       </Routes>
+
       <div className="mobile-warning">
         <img src="https://i.ibb.co/g9KDtqK/warning.png" alt="Aviso" />
         <p>O aplicativo está disponível apenas para desktop.</p>
       </div>
     </div>
-  );
+  ); 
 };
 
 const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
@@ -184,6 +218,13 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/usuarios-online" element={<UsuariosOnline userProfile={userProfile}/>} />
         <Route path="/vir-telecom/Dashboard-virtelecom" element={<HomeDashBoard userProfile={userProfile}/>} />
         <Route path="/notas" element={<Notes userProfile={userProfile}/>} />
+        <Route path="/tarefas" element={<Tasks userProfile={userProfile}/>} />
+        <Route path="/monitor-vps" element={<MonitorVPS userProfile={userProfile}/>} />
+        <Route path="/galeria" element={<GalleryPage userProfile={userProfile}/>} />
+        <Route path="/paginaEmpresa" element={<PaginaEmpresas userProfile={userProfile}/>} />
+
+
+
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </div>

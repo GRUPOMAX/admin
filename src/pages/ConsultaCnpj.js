@@ -49,8 +49,9 @@ const ConsultaCnpj = () => {
 
   return (
     <div className="consulta-cnpj-container">
-      <Card style={{ maxWidth: 800, margin: '20px auto', padding: '20px', minHeight: '400px' }}>
-        <Title level={3}>Consulta de CNPJ</Title>
+<Card style={{ maxWidth: 800, width: '100%', padding: '20px', borderRadius: '8px' }}>
+
+<Title level={3}>Consulta de CNPJ</Title>
         <Form layout="vertical" onFinish={handleSubmit}>
           <Form.Item
             label="Digite o CNPJ"
@@ -70,7 +71,7 @@ const ConsultaCnpj = () => {
         </Form>
 
         {companyData && (
-          <div className="company-data" style={{ marginTop: 20 }}>
+          <div className="company-data">
             <Title level={4}>{companyData.nome}</Title>
             <p><Text strong>CNPJ:</Text> {companyData.cnpj}</p>
             <p><Text strong>Abertura:</Text> {companyData.abertura}</p>

@@ -1,0 +1,93 @@
+/* Estilo básico do container principal da galeria */
+.gallery-container {
+    padding: 20px;
+    background-color: #f0f2f5; /* Mantém a cor de fundo suave */
+    border-radius: 8px;
+    width: 100%; /* Largura total da página */
+    max-width: 100%; /* Remove a restrição de largura máxima */
+    margin: 0 auto; /* Centraliza o container na página */
+  }
+  
+  /* Estilo para o título da galeria */
+  .gallery-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center; /* Centraliza o título */
+  }
+  
+  /* Estilo para o campo de input */
+  .gallery-input {
+    margin-bottom: 20px;
+    width: 100%; /* Largura total */
+    max-width: 400px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    margin: 0 auto; /* Centraliza o input */
+    display: block;
+  }
+  
+/* Estilo para o botão de upload */
+.gallery-upload-btn {
+    font-size: 14px;
+    line-height: 1;
+    height: 32px;
+    padding: 4px 15px;
+    border-radius: 6px;
+    margin-left: 53vw;
+    /* margin-bottom: -28px; */
+}
+    
+  .gallery-upload-btn:hover {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+  }
+  /* Estilo para o container dos cartões de imagens */
+  .gallery-cards {
+    display: flex;
+    justify-content: center; /* Centraliza os cartões */
+    gap: 20px; /* Espaçamento entre os cartões */
+    flex-wrap: wrap;
+    padding: 10px 50px; /* Espaçamento interno maior para os cartões */
+  }
+  
+  /* Estilo para os cartões de imagens */
+  .gallery-card {
+    width: 240px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    background-color: white; /* Adiciona um fundo branco para os cartões */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para destaque */
+  }
+  
+  .gallery-card:hover {
+    transform: scale(1.05); /* Aumenta levemente o cartão ao passar o mouse */
+  }
+  
+  .gallery-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  /* Estilo para os títulos das imagens */
+  .gallery-card .ant-card-meta-title {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  /* Estilo para o ícone de exclusão */
+  .gallery-card .anticon-delete {
+    color: #ff4d4f;
+    transition: color 0.3s ease;
+  }
+  
+  .gallery-card .anticon-delete:hover {
+    color: #ff7875;
+  }
+  

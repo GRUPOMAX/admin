@@ -93,6 +93,7 @@ const Login = ({ onLogin }) => {
                     email: user.email,
                     profilePic: user.profilePicUrl,
                     Cargo1: user.Cargo1,
+                    empresa: user.empresa,
                 };
 
                 console.log('userProfile criado:', userProfile);

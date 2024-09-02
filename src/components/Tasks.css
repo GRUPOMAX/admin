@@ -1,0 +1,109 @@
+/* Fontes e cores */
+.tasks-container {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tasks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tasks-header h2 {
+  font-size: 24px;
+  margin: 0;
+  color: #555;
+}
+
+.tasks-item {
+  padding: 15px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.tasks-item:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tasks-actions button {
+  margin-right: 10px;
+}
+
+.tasks-actions button:last-child {
+  margin-right: 0;
+}
+
+.tasks-container .ant-btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: all 0.3s ease;
+}
+
+.tasks-container .ant-btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.tasks-container .ant-input,
+.tasks-container .ant-select-selector,
+.tasks-container .ant-picker {
+  border-radius: 5px;
+  border-color: #ddd;
+  transition: all 0.3s ease;
+}
+
+.tasks-container .ant-input:focus,
+.tasks-container .ant-select-selector:focus,
+.tasks-container .ant-picker-focused {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.tasks-container .ant-modal-content {
+  border-radius: 8px;
+}
+
+.tasks-container .ant-modal-header {
+  border-bottom: none;
+}
+
+.tasks-container .ant-modal-title {
+  color: #333;
+  font-size: 18px;
+}
+
+.tasks-container .ant-checkbox-wrapper {
+  margin-bottom: 15px;
+}
+
+.tasks-container .ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.tasks-container .ant-tag-green {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.tasks-container .ant-tag-red {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
