@@ -4,7 +4,7 @@ import LinkItem from '../components/LinkItem';
 import './styles/MaxFibra.css';
 
 const accessPermissions = {
-  Administrador: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca'],
+  Administrador: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta'],
   Desenvolvedor: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca'],
   Financeiro: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'Secullum', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT', 'OpaSuite', 'CredLocaliza','SSA'],
   Vendedor: ['Canva', 'Gmail', 'Trello'],
@@ -47,6 +47,7 @@ const MaxFibra = ({ userProfile }) => {
         { id:'CredLocaliza' ,url: 'https://credlocaliza.com.br/sistema/account/login',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/CRED-LOCALIZA.jpg', altText: 'CredLocaliza', text: 'CredLocaliza' },
         { id:'PLayHUB' ,url: 'https://www.playhub.com.br/APP/Login',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/07/Copia-de-PRO.gif', altText: 'PlayHub', text: 'PlayHub' },
         { id:'Totem' ,url: 'https://maxfibra.myog.io/admin/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/DATACAKE.png', altText: 'Area Administração - Totem', text: 'Area Administração - Totem' },
+        { id:'GeradorProposta' ,url: 'https://grupomax.github.io/Gerador_Proposta_Comercial/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/PropostaComecial.jpg', altText: 'Gerador de Proposta', text: 'Gerador de Proposta' },
       ],
     },
     //PROGRAMA PROGRAMAS UTEIS  ========================
