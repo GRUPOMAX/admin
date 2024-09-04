@@ -86,7 +86,6 @@ const Sidebar = ({ onLogout }) => {
     '/home/max-fibra/consultaCNPJ': [
       { name: 'Dashboard', href: '/home/max-fibra' },
       { name: 'Max Fibra - Atalhos', href: '/home/max-fibra' },
-      { name: 'Consulta CPF', href: '/home/max-fibra/consultaCPF' },
     ],
     '/home/max-fibra/consultaCPF': [
       { name: 'Pagina Inicial', href: '/home/max-fibra' },
