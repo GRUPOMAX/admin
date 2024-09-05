@@ -486,7 +486,7 @@
     .chart-container {
       position: absolute;
       left: 432px;
-      top: 380px;
+      top: 432px;
       width: 81%;
       z-index: 10; /* Isso faz com que o gráfico fique sobreposto a outros elementos */
     }

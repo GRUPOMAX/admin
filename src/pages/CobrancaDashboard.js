@@ -102,7 +102,7 @@ const CobrancaDashboard = React.memo(() => {
             height: '10px',
             borderRadius: '50%',
             backgroundColor: getColorForBlockedClients(totalBlocked),
-            marginLeft: '10px'
+            marginLeft: '20px'
           }}
         />
       </p>

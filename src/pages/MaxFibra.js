@@ -4,7 +4,7 @@ import LinkItem from '../components/LinkItem';
 import './styles/MaxFibra.css';
 
 const accessPermissions = {
-  Administrador: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
+  Administrador: ['Chatwoot','IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
   Desenvolvedor: ['Chatwoot','IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
   Financeiro: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'Secullum', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT', 'OpaSuite', 'CredLocaliza','SSA', 'ConsultaCPF'],
   Vendedor: ['Canva', 'Gmail', 'Trello', 'ConsultaCPF'],
@@ -32,6 +32,13 @@ const MaxFibra = ({ userProfile }) => {
       ],
     }, //PROGRAMA ANALISE E MONITORAMENTO  =================
     {
+      title: 'Atendimento ao Publico',
+      links: [
+        { id: 'OpaSuite', url: 'https://maxfibra.opasuite.com.br', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/OPA-Max.png', altText: 'Opa! Suite', text: 'OpaSuite!' },
+        { id: 'Chatwoot', url: 'https://chatwoot.nexusnerds.com.br', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/06/PRO-1.gif', altText: 'Chatwoot', text: 'Chatwoot' },
+      ],
+    },
+    {
       title: 'Analise e Monitoramento',
       links: [
             { id:'SmartOLT' ,url: 'https://grupomaxltda.smartolt.com/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SMART-OLT.png', altText: 'SMART-OLT', text: 'Smart-Olt'},
@@ -49,13 +56,6 @@ const MaxFibra = ({ userProfile }) => {
         { id:'Totem' ,url: 'https://maxfibra.myog.io/admin/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/DATACAKE.png', altText: 'Area Administração - Totem', text: 'Area Administração - Totem' },
         { id:'GeradorProposta' ,url: 'https://grupomax.github.io/Gerador_Proposta_Comercial/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/PropostaComecial.jpg', altText: 'Gerador de Proposta', text: 'Gerador de Proposta' },
         { id: 'ConsultaCPF', url: 'https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/PRO.gif', altText: 'CPF CONSULTA', text: 'Consulta CPF' },
-      ],
-    },
-    {
-      title: 'Atendimento ao Publico',
-      links: [
-        { id: 'OpaSuite', url: 'https://maxfibra.opasuite.com.br', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/OPA-Max.png', altText: 'Opa! Suite', text: 'OpaSuite!' },
-        { id: 'Chatwoot', url: 'https://chatwoot.nexusnerds.com.br', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/06/PRO-1.gif', altText: 'Chatwoot', text: 'Chatwoot' },
       ],
     },
     //PROGRAMA PROGRAMAS UTEIS  ========================
