@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { HashRouter as Router, Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import MaxFibra from './pages/MaxFibra';
 import CompanySelector from './components/CompanySelector';
@@ -18,7 +18,7 @@ import GerenciarAtalhos from './GerenciarAtalhos';
 import ConfigScreen from './pages/ConfigScreen';
 import SendNotification from './components/SendNotification';
 import UsuariosOnline from './components/UsuariosOnline';
-import DetalhesDispositivos from './pages/DetalhesDispositivos'; // Importe a nova página
+import DetalhesDispositivos from './pages/DetalhesDispositivos';
 import HomeDashBoard from './pages/HomeDashboard';
 import Notes from './components/Notes';
 import Tasks from './components/Tasks';
@@ -27,11 +27,7 @@ import GalleryPage from './GalleryPage';
 import PaginaEmpresas from './components/PaginaEmpresas';
 import Fechamento from './pages/fechamento';
 import Relatorios from './pages/Relatorios';
-
-
-
 import axios from 'axios';
-
 import './App.css';
 
 const App = () => {
@@ -46,83 +42,11 @@ const App = () => {
   });
 
   const location = useLocation();
+  const logoutTimerRef = useRef(null);  // Usar ref para manter controle do temporizador
 
-  
-
-  useEffect(() => {
-    const isLoginPage = location.pathname === '/' || location.pathname === '/login';
-    if (isLoginPage) {
-      document.body.classList.add('login-background');
-    } else {
-      document.body.classList.remove('login-background');
-    }
-  }, [location]);
-
-  useEffect(() => {
-    const checkTimers = () => {
-      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-      const now = new Date().getTime();
-      tasks.forEach(task => {
-        if (task.timerEnd) {
-          const timeRemaining = task.timerEnd - now;
-          if (timeRemaining <= 0) {
-            // Toca o alarme
-            const audio = new Audio('/alert.mp3');
-            audio.play();
-            // Atualiza o localStorage para remover o timer concluído
-            task.timerEnd = null;
-          }
-        }
-      });
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    };
-
-    const interval = setInterval(checkTimers, 1000);
-    return () => clearInterval(interval);
-  }, []);
-  
-  const updateOnlineStatus = async (isOnline) => {
-    if (userProfile) {
-      const now = new Date().toISOString();
-      const userData = {
-        name: userProfile.name,
-        email: userProfile.email,
-        password: userProfile.password,
-        Cargo1: userProfile.Cargo1,
-        username: userProfile.username,
-        profilePicUrl: userProfile.profilePic,
-        isOnline: isOnline,
-        lastActiveAt: now,
-        empresa: userProfile.empresa
-      };
-  
-      try {
-        await axios.patch(
-          'https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records',
-          userData,
-          {
-            headers: {
-              'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
-            },
-          }
-        );
-        console.log('Status do usuário atualizado:', isOnline ? 'Online' : 'Offline');
-      } catch (error) {
-        console.error('Erro ao atualizar o status online:', error);
-      }
-    }
-  };
-
-  const handleLogin = (userData) => {
-    setIsAuthenticated(true);
-    localStorage.setItem('isAuthenticated', 'true');
-    const userProfileData = { ...userData, name: userData.name || userData.username };
-    setUserProfile(userProfileData);
-    localStorage.setItem('userProfile', JSON.stringify(userProfileData));
-    updateOnlineStatus(true); // Atualiza para "online" quando o usuário fizer login
-  };
-
+  // Função de logout
   const handleLogout = async () => {
+    console.log("Executando logout...");
     if (userProfile) {
       const now = new Date().toISOString();
       const userData = {
@@ -137,7 +61,7 @@ const App = () => {
         lastActiveAt: now,
         empresa: userProfile.empresa
       };
-  
+
       try {
         await axios.patch(
           'https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records',
@@ -149,7 +73,7 @@ const App = () => {
           }
         );
         console.log('Status do usuário atualizado para offline.');
-  
+
         setIsAuthenticated(false);
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('userProfile');
@@ -158,6 +82,67 @@ const App = () => {
         console.error('Erro ao atualizar o status online para offline:', error);
       }
     }
+  };
+
+  // Função para definir o temporizador de logout automático
+  const setupAutoLogout = () => {
+    // Limpa qualquer temporizador ativo anterior
+    if (logoutTimerRef.current) {
+      clearTimeout(logoutTimerRef.current);
+    }
+
+    // Define o novo temporizador
+    logoutTimerRef.current = setTimeout(() => {
+      console.log("Tempo limite atingido. Executando logout...");
+      handleLogout(); // Logout após 2 horas de inatividade
+    }, 7200000); // 2 horas = 7200000 ms
+
+    //console.log("Timer de logout iniciado/reiniciado.");
+  };
+
+  // Função para reiniciar o temporizador quando houver atividade do usuário
+  const resetLogoutTimer = () => {
+    //console.log("Atividade detectada. Reiniciando o timer de logout.");
+    setupAutoLogout(); // Reinicia o temporizador sempre que houver atividade
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // Configura o temporizador de logout automático
+      setupAutoLogout();
+
+      // Adiciona eventos de atividade do usuário
+      window.addEventListener('mousemove', resetLogoutTimer);
+      window.addEventListener('keypress', resetLogoutTimer);
+      window.addEventListener('click', resetLogoutTimer);
+      window.addEventListener('touchstart', resetLogoutTimer);
+
+      return () => {
+        // Limpa o temporizador e remove os listeners de eventos quando o componente desmontar
+        clearTimeout(logoutTimerRef.current);
+        window.removeEventListener('mousemove', resetLogoutTimer);
+        window.removeEventListener('keypress', resetLogoutTimer);
+        window.removeEventListener('click', resetLogoutTimer);
+        window.removeEventListener('touchstart', resetLogoutTimer);
+      };
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    const isLoginPage = location.pathname === '/' || location.pathname === '/login';
+    if (isLoginPage) {
+      document.body.classList.add('login-background');
+    } else {
+      document.body.classList.remove('login-background');
+    }
+  }, [location]);
+
+  const handleLogin = (userData) => {
+    setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', 'true');
+    const userProfileData = { ...userData, name: userData.name || userData.username };
+    setUserProfile(userProfileData);
+    localStorage.setItem('userProfile', JSON.stringify(userProfileData));
   };
 
   const handleProfileUpdate = (updatedProfile) => {
@@ -189,13 +174,8 @@ const App = () => {
           <Route path="*" element={<Login onLogin={handleLogin} />} />
         )}
       </Routes>
-
-      <div className="mobile-warning">
-        <img src="https://i.ibb.co/g9KDtqK/warning.png" alt="Aviso" />
-        <p>O aplicativo está disponível apenas para desktop.</p>
-      </div>
     </div>
-  ); 
+  );
 };
 
 const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
@@ -203,8 +183,8 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
     <Sidebar onLogout={onLogout} />
     <div className="layout-container">
       <Routes>
-        <Route path="/" element={<Home  userProfile={userProfile}/>} />
-        <Route path="/detalhes-dispositivos" element={<DetalhesDispositivos userProfile={userProfile}/>} /> {/* Nova rota */}
+        <Route path="/" element={<Home userProfile={userProfile}/>} />
+        <Route path="/detalhes-dispositivos" element={<DetalhesDispositivos userProfile={userProfile}/>} />
         <Route path="/max-fibra" element={<MaxFibra userProfile={userProfile} />} />
         <Route path="/max-fibra/consultaCPF" element={<ConsultaCpf />} />
         <Route path="/max-fibra/consultaCNPJ" element={<ConsultaCnpj />} />
@@ -226,9 +206,6 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/relatorio-fechamento" element={<Relatorios userProfile={userProfile}/>} />
         <Route path="/fechamento" element={<Fechamento userProfile={userProfile}/>} />
         <Route path="/paginaEmpresa" element={<PaginaEmpresas userProfile={userProfile}/>} />
-
-
-
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </div>
