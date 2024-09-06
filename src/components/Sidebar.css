@@ -26,3 +26,14 @@
   /* margin-right: 42px; */
   border-radius: 6px;
 }
+
+.next-birthday-container {
+  padding: 13px;
+  background-color: #f0f0f0;
+  position: fixed;
+  margin-top: 62vh;
+  width: 222px;
+  /* margin-right: 42px; */
+  border-radius: 6px;
+
+}

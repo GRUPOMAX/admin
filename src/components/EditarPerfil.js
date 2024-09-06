@@ -1,6 +1,7 @@
-// src/components/EditarPerfil.js
 import React, { useEffect, useState } from 'react';
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, message, DatePicker } from 'antd';
+import moment from 'moment';
+import 'moment/locale/pt-br'; // Para trabalhar com datas no padrão brasileiro
 import axios from 'axios';
 import UploadImage from './UploadImage'; // Importe o componente de upload
 import './EditarPerfil.css';
@@ -24,6 +25,7 @@ const EditarPerfil = ({ userProfile, onProfileUpdate }) => {
             form.setFieldsValue({
               name: userData.name,
               email: userData.email,
+              nascimento: moment(userData.nascimento, 'YYYY-MM-DD'), // Ajustar a data para o formato correto
               password: userData.password,
               profilePicUrl: userData.profilePicUrl,
               Cargo1: userData.Cargo1,
@@ -58,6 +60,7 @@ const EditarPerfil = ({ userProfile, onProfileUpdate }) => {
           Id: userProfile.id,
           email: values.email,
           password: values.password,
+          nascimento: values.nascimento,
           Cargo1: values.Cargo1,
           name: values.name,
           profilePicUrl: values.profilePicUrl,
@@ -121,6 +124,18 @@ const EditarPerfil = ({ userProfile, onProfileUpdate }) => {
           rules={[{ required: true, message: 'Por favor, insira sua senha!' }]}
         >
           <Input.Password placeholder="Digite sua senha" />
+        </Form.Item>
+        {/* Campo de Data de Nascimento */}
+        <Form.Item
+          label="Data de Nascimento"
+          name="nascimento"
+          rules={[{ required: true, message: 'Por favor, insira a data de nascimento!' }]}
+        >
+          <DatePicker 
+            format="DD/MM/YYYY"
+            placeholder="DD/MM/AAAA" // Placeholder em formato brasileiro
+            disabled // Desabilitar o campo para que não seja editável
+          />
         </Form.Item>
         <Form.Item
           label="URL da Foto de Perfil"

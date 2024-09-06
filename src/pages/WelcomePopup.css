@@ -1,0 +1,19 @@
+.welcome-page {
+    text-align: center;
+  }
+  
+  .welcome-page h2 {
+    color: #1890ff;
+    margin-bottom: 16px;
+  }
+  
+  .welcome-page p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  

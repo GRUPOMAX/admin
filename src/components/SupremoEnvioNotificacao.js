@@ -4,10 +4,10 @@ import axios from 'axios';
 
 const { Option } = Select;
 
-const SendNotification = () => {
+const SupremoEnvioNotificacao = () => {
   const [users, setUsers] = useState([]);
-  const [sendToAll, setSendToAll] = useState(false); // Estado para "Enviar para todos"
   const [form] = Form.useForm();
+  const [sendToAll, setSendToAll] = useState(false);  // Estado para armazenar sendToAll
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -31,27 +31,26 @@ const SendNotification = () => {
       const notificationData = {
         title: values.title,
         message: values.message,
-        command: values.command,  // Adicionar o campo command vindo do formulário
+        command: values.command,  // Inclui o comando a ser enviado
         isRead: false,
         createdAt_: null,
       };
-  
-      if (sendToAll) {
+
+      if (sendToAll) {  // Usando o estado de sendToAll diretamente
         const userIds = users.map(user => user.Id);
         await sendNotificationToUsers(userIds, notificationData);
       } else {
         await sendNotificationToUsers(values.userIds, notificationData);
       }
-  
+
       message.success('Notificação enviada com sucesso!');
       form.resetFields();
-      setSendToAll(false); // Resetar o estado para "Enviar para todos"
+      setSendToAll(false);  // Resetar o estado para "Enviar para todos"
     } catch (error) {
       console.error('Erro ao enviar notificação:', error);
       message.error('Erro ao enviar a notificação.');
     }
   };
-  
 
   const sendNotificationToUsers = async (userIds, notificationData) => {
     for (const userId of userIds) {
@@ -73,7 +72,7 @@ const SendNotification = () => {
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
       <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', borderRadius: '8px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Enviar Notificação</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Enviar Notificação Supremo</h2>
         <Form form={form} onFinish={handleSendNotification} layout="vertical">
           <Form.Item
             label="Título"
@@ -91,12 +90,24 @@ const SendNotification = () => {
             <Input.TextArea rows={4} />
           </Form.Item>
 
-          <Form.Item name="sendToAll" valuePropName="checked">
-            <Checkbox onChange={(e) => setSendToAll(e.target.checked)}>
-              Enviar para todos os usuários
-            </Checkbox>
+          <Form.Item
+            label="Comando"
+            name="command"
+            rules={[{ required: true, message: 'Por favor, selecione o comando a ser enviado.' }]}
+          >
+            <Select placeholder="Selecione o comando">
+              <Option value="reload">Recarregar Página</Option>
+              <Option value="clearCache">Limpar Cache</Option>
+              <Option value="logOut">Deslogar Usuário</Option>
+              {/* Outros comandos podem ser adicionados aqui */}
+            </Select>
           </Form.Item>
 
+          <Form.Item name="sendToAll" valuePropName="checked">
+            <Checkbox onChange={(e) => setSendToAll(e.target.checked)}>Enviar para todos os usuários</Checkbox>
+          </Form.Item>
+
+          {/* Mostrar a lista de usuários apenas se sendToAll for falso */}
           {!sendToAll && (
             <Form.Item
               label="Selecione os usuários"
@@ -124,4 +135,4 @@ const SendNotification = () => {
   );
 };
 
-export default SendNotification;
+export default SupremoEnvioNotificacao;

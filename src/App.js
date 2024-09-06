@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { HashRouter as Router, Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import MaxFibra from './pages/MaxFibra';
-import CompanySelector from './components/CompanySelector';
 import VirTelecom from './pages/VirTelecom';
 import ReisServices from './pages/ReisServices';
 import Contact from './pages/Contact';
@@ -27,6 +26,14 @@ import GalleryPage from './GalleryPage';
 import PaginaEmpresas from './components/PaginaEmpresas';
 import Fechamento from './pages/fechamento';
 import Relatorios from './pages/Relatorios';
+import NotificationPopup from './components/NotificationPopup'; // Importar o componente de notificação
+import SupremoEnvioNotificacao from './components/SupremoEnvioNotificacao';
+import WelcomePopup from './pages/WelcomePopup';
+
+
+
+
+
 import axios from 'axios';
 import './App.css';
 
@@ -41,6 +48,21 @@ const App = () => {
     return savedProfile ? JSON.parse(savedProfile) : null;
   });
 
+  // Estado para armazenar notificações no sistema local
+  const [notificacoes, setNotificacoes] = useState([]);
+
+  // Função para adicionar notificação ao sistema local
+  const adicionarNotificacao = (mensagem) => {
+    const novaNotificacao = {
+      id: new Date().getTime(),
+      mensagem,
+      lido: false,
+    };
+
+    const updatedNotificacoes = [...notificacoes, novaNotificacao];
+    setNotificacoes(updatedNotificacoes);
+  };
+
   const location = useLocation();
   const logoutTimerRef = useRef(null);  // Usar ref para manter controle do temporizador
 
@@ -53,6 +75,7 @@ const App = () => {
         Id: userProfile.id,
         name: userProfile.name,
         email: userProfile.email,
+        nascimento: userProfile.nascimento,
         password: userProfile.password,
         Cargo1: userProfile.Cargo1,
         username: userProfile.username,
@@ -96,13 +119,10 @@ const App = () => {
       console.log("Tempo limite atingido. Executando logout...");
       handleLogout(); // Logout após 2 horas de inatividade
     }, 7200000); // 2 horas = 7200000 ms
-
-    //console.log("Timer de logout iniciado/reiniciado.");
   };
 
   // Função para reiniciar o temporizador quando houver atividade do usuário
   const resetLogoutTimer = () => {
-    //console.log("Atividade detectada. Reiniciando o timer de logout.");
     setupAutoLogout(); // Reinicia o temporizador sempre que houver atividade
   };
 
@@ -154,7 +174,7 @@ const App = () => {
   return (
     <div className={`App ${location.pathname === '/cadastro' ? 'cadastro-page' : ''}`}>
       {isAuthenticated && userProfile && <Header userProfile={userProfile} onLogout={handleLogout} />}
-
+      
       <Routes>
         {isAuthenticated && userProfile ? (
           <>
@@ -165,6 +185,9 @@ const App = () => {
                   onLogout={handleLogout}
                   userProfile={userProfile}
                   onProfileUpdate={handleProfileUpdate}
+                  adicionarNotificacao={adicionarNotificacao} // Passando a função adicionarNotificacao para o SidebarLayout
+                  notificacoes={notificacoes}
+                  setNotificacoes={setNotificacoes}
                 />
               }
             />
@@ -178,9 +201,14 @@ const App = () => {
   );
 };
 
+
+
 const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
   <>
-    <Sidebar onLogout={onLogout} />
+    <Sidebar onLogout={onLogout} userName={userProfile.name} /> {/* Aqui passamos o userName */}
+    
+    <NotificationPopup userId={userProfile.id} /> {/* Adicionamos o NotificationPopup aqui */}
+    <WelcomePopup userProfile={userProfile} />
     <div className="layout-container">
       <Routes>
         <Route path="/" element={<Home userProfile={userProfile}/>} />
@@ -206,6 +234,8 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/relatorio-fechamento" element={<Relatorios userProfile={userProfile}/>} />
         <Route path="/fechamento" element={<Fechamento userProfile={userProfile}/>} />
         <Route path="/paginaEmpresa" element={<PaginaEmpresas userProfile={userProfile}/>} />
+        <Route path="/EnvioSupremo" element={<SupremoEnvioNotificacao userProfile={userProfile}/>} />
+
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </div>

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Select, message } from 'antd';
+import { Form, Input, Button, Select, message, DatePicker } from 'antd';
+import moment from 'moment';
+import 'moment/locale/pt-br'; // Para trabalhar com datas no padrão brasileiro
 import axios from 'axios';
 import UploadImage from '../components/UploadImage'; // Importe o componente de upload
 import './styles/CriarUsuario.css';
+
+// Configure o moment para usar o formato brasileiro
+moment.locale('pt-br');
 
 const CriarUsuario = () => {
   const [form] = Form.useForm();
@@ -24,6 +29,7 @@ const CriarUsuario = () => {
       username: values.username,
       profilePicUrl: profilePicUrl,
       empresa: values.empresa,
+      nascimento: values.nascimento ? values.nascimento.format('YYYY-MM-DD') : '', // Converte para formato de data ISO
     };
 
     console.log('Payload enviado:', payload); // Adicione este log para inspecionar o payload
@@ -61,6 +67,7 @@ const CriarUsuario = () => {
         initialValues={{
           name: '',
           email: '',
+          nascimento: '',
           password: '',
           username: '',
           Cargo1: '',
@@ -106,6 +113,22 @@ const CriarUsuario = () => {
             <Select.Option value="Vendedor">Vendedor</Select.Option>
           </Select>
         </Form.Item>
+
+        {/* Campo de Data de Nascimento */}
+        <Form.Item
+          label="Data de Nascimento"
+          name="nascimento"
+          rules={[{ required: true, message: 'Por favor, insira a data de nascimento!' }]}
+        >
+          <DatePicker 
+            format="DD/MM/YYYY"
+            placeholder="DD/MM/AAAA" // Placeholder em formato brasileiro
+            allowClear // Permite que o campo seja apagado e manualmente digitado
+            inputReadOnly={false} // Permite que o usuário digite a data
+            disabledDate={(current) => current && current > moment().endOf('day')} // Impede datas futuras
+          />
+        </Form.Item>
+
         <Form.Item
           label="Empresa"
           name="empresa"
