@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Select, message, Spin, Button } from 'antd';
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 import axios from 'axios';
 import './styles/FinanceiroDashboard.css';
 
@@ -9,7 +11,7 @@ const FinanceiroDashboard = () => {
   const [clientes, setClientes] = useState([]);
   const [numeroDeClientesAtivos, setNumeroDeClientesAtivos] = useState(0);
   const [meses, setMeses] = useState([]);
-  const [selectedMes, setSelectedMes] = useState('');
+  const [selectedMes, setSelectedMes] = useState('Neste Mês'); // Preseleciona "Neste Mês"
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,16 +38,43 @@ const FinanceiroDashboard = () => {
     fetchData();
   }, []);
 
+  // Função para exportar a tabela filtrada para XLSX
+  const exportToXLSX = () => {
+    const ws = XLSX.utils.json_to_sheet(filteredClientes); // Converte apenas os clientes filtrados para um sheet
+    const wb = XLSX.utils.book_new(); // Cria um novo workbook
+    XLSX.utils.book_append_sheet(wb, ws, 'Clientes Filtrados'); // Adiciona o sheet ao workbook
+
+    // Converte o workbook para um arquivo binário e inicia o download
+    const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+    saveAs(blob, `clientes_${selectedMes || 'todos_os_meses'}.xlsx`);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR');
+  };
+
   const columns = [
     {
       title: 'Nome do Cliente',
       dataIndex: 'nome_cliente',
       key: 'nome_cliente',
+      render: (text, record) => (
+        <span style={{ color: record.bloqueado === 'Sim' ? 'red' : 'inherit' }}>
+          {text}
+        </span>
+      ),
     },
     {
       title: 'Data de Ativação',
       dataIndex: 'data_ativacao',
       key: 'data_ativacao',
+      render: (text, record) => (
+        <span style={{ color: record.bloqueado === 'Sim' ? 'red' : 'inherit' }}>
+          {formatDate(text)}
+        </span>
+      ),
     },
     {
       title: 'Mês de Ativação',
@@ -56,6 +85,21 @@ const FinanceiroDashboard = () => {
       title: 'Bloqueado',
       dataIndex: 'bloqueado',
       key: 'bloqueado',
+      render: (text) => (
+        <span style={{ color: text === 'Sim' ? 'red' : 'inherit' }}>
+          {text}
+        </span>
+      ),
+    },
+    {
+      title: 'Vendedor Responsável',
+      dataIndex: 'vendedor_responsavel',
+      key: 'vendedor_responsavel',
+      render: (text, record) => (
+        <span style={{ color: record.bloqueado === 'Sim' ? 'red' : 'inherit' }}>
+          {text}
+        </span>
+      ),
     },
   ];
 
@@ -83,24 +127,31 @@ const FinanceiroDashboard = () => {
           placeholder="Filtrar por mês de ativação"
           onChange={(value) => setSelectedMes(value)}
           style={{ width: 200, marginBottom: 20 }}
+          value={selectedMes} // Pre-seleciona "Neste Mês"
         >
           <Option value="">Todos os meses</Option>
-          {meses.map(mes => (
-            <Option key={mes} value={mes}>
-              {mes}
-            </Option>
-          ))}
+          <Option value="Mês Passado">Mês Passado</Option>
+          <Option value="Neste Mês">Neste Mês</Option>
         </Select>
       </div>
       {loading ? (
         <Spin size="large" tip="Carregando dados..." />
       ) : (
-        <Table
-          columns={columns}
-          dataSource={filteredClientes}
-          rowKey="nome_cliente"
-          pagination={{ pageSize: 10 }}
-        />
+        <>
+          <Table
+            columns={columns}
+            dataSource={filteredClientes}
+            rowKey="nome_cliente"
+            pagination={{ pageSize: 10 }}
+          />
+          <Button
+            type="primary"
+            onClick={exportToXLSX}
+            style={{ marginTop: 20 }}
+          >
+            Baixar XLSX
+          </Button>
+        </>
       )}
       <Button
         type="primary"
