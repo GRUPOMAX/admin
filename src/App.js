@@ -214,8 +214,8 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/" element={<Home userProfile={userProfile}/>} />
         <Route path="/detalhes-dispositivos" element={<DetalhesDispositivos userProfile={userProfile}/>} />
         <Route path="/max-fibra" element={<MaxFibra userProfile={userProfile} />} />
-        <Route path="/max-fibra/consultaCPF" element={<ConsultaCpf />} />
-        <Route path="/max-fibra/consultaCNPJ" element={<ConsultaCnpj />} />
+        <Route path="/consultaCPF" element={<ConsultaCpf />} />
+        <Route path="/consultaCNPJ" element={<ConsultaCnpj />} />
         <Route path="/vir-telecom" element={<VirTelecom userProfile={userProfile}/>} />
         <Route path="/reis-services" element={<ReisServices userProfile={userProfile}/>} />
         <Route path="/contact" element={<Contact />} />

@@ -22,10 +22,11 @@ const Header = ({ userProfile, onLogout }) => {
   // Função para formatar a chave da empresa para uso na URL
   const formatKey = (key) => {
     return key
-      .toLowerCase()  
-      .replace(/\s+/g, '-')  
-      .replace(/[^a-z0-9-]/g, '');  
+      .toLowerCase()  // Converter para minúsculas
+      .replace(/\s+/g, '-')  // Substituir espaços por hífens
+      .replace(/[^a-z0-9-]/g, '');  // Remover caracteres não alfanuméricos e hífens
   };
+  
 
   const fetchEmpresas = () => {
     if (!userProfile || !userProfile.id) {
@@ -35,29 +36,42 @@ const Header = ({ userProfile, onLogout }) => {
       return;
     }
 
+    console.log("Iniciando a busca de empresas no Firebase para o usuário:", userProfile.id);
+
     const docRef = doc(db, "users", String(userProfile.id));
 
+    // Escuta em tempo real para mudanças no documento do Firebase
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
         const dados = docSnap.data();
+        console.log("Dados recuperados do documento Firebase:", dados);
+
         if (dados.companies && dados.companies.length > 0) {
+          console.log("Empresas encontradas:", dados.companies);
           setEmpresas(dados.companies);
+
+          // Define a empresa inicial como a primeira do array e redireciona
           const primeiraEmpresa = dados.companies[0];
           setSelectedEmpresa(primeiraEmpresa);
           navigate(`/home/${formatKey(primeiraEmpresa)}`);
         } else {
+          console.log("Nenhuma empresa encontrada no documento.");
           setEmpresas([]);
         }
       } else {
+        console.error('Nenhum documento encontrado para esse usuário.');
         setErro('Nenhum documento encontrado para esse usuário.');
       }
       setCarregando(false);
     }, (error) => {
+      console.error('Erro ao buscar dados do Firebase:', error);
       setErro('Erro ao buscar dados do Firebase');
       setCarregando(false);
     });
 
+    // Limpeza da escuta quando o componente é desmontado
     return () => {
+      console.log("Limpeza da escuta do Firebase.");
       unsubscribe();
     };
   };
@@ -220,6 +234,7 @@ const Header = ({ userProfile, onLogout }) => {
   };
 
   const handleMenuClick = ({ key }) => {
+    console.log('Chave recebida:', key);  // Verifique qual chave está sendo passada
     switch (key) {
       case 'editProfile':
         navigate('/home/editar-perfil');
@@ -260,10 +275,25 @@ const Header = ({ userProfile, onLogout }) => {
       case 'logout':
         onLogout();
         break;
+  
+      // Adicionando rotas das empresas formatadas
+      case 'vir-telecom':
+        navigate('/home/vir-telecom');
+        break;
+      case 'reis-services':
+        navigate('/home/reis-services');
+        break;
+      case 'max-fibra':
+        navigate('/home/max-fibra');
+        break;
+  
       default:
         console.log('Rota não reconhecida:', key);
     }
   };
+  
+  
+  
   
   const empresasMenu = (
     <Menu onClick={handleMenuClick}>
@@ -272,7 +302,7 @@ const Header = ({ userProfile, onLogout }) => {
       ) : (
         empresas.length > 0 ? (
           empresas.map((empresa) => (
-            <Menu.Item key={empresa}>
+            <Menu.Item key={formatKey(empresa)}>
               {empresa}
             </Menu.Item>
           ))
@@ -284,6 +314,7 @@ const Header = ({ userProfile, onLogout }) => {
       )}
     </Menu>
   );
+  
 
   const notificationMenu = (
     <Menu>

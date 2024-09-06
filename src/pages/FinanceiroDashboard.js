@@ -153,13 +153,6 @@ const FinanceiroDashboard = () => {
           </Button>
         </>
       )}
-      <Button
-        type="primary"
-        onClick={() => window.location.reload()}
-        style={{ marginTop: 20 }}
-      >
-        Atualizar Dados
-      </Button>
     </div>
   );
 };

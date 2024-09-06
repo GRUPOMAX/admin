@@ -145,13 +145,60 @@ const Sidebar = ({ onLogout, userName }) => {
   };
 
   const menuOptions = {
+    '/': [
+      { name: 'Home', href: '/' },
+      { name: 'Max Fibra', href: '/max-fibra' },
+      { name: 'Cadastro Vendedor', href: '/max-fibra/cadastro' },
+    ],
     '/home/max-fibra': [
-      { name: 'Dashboard', href: '/home/home' },
-      { name: 'Consulta CNPJ', href: '/home/max-fibra/consultaCNPJ' },
+      { name: 'Dashboard', href: '/' },
+      { name: 'Consulta CNPJ', href: '/home/consultaCNPJ' },
       { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
     ],
-    // Outros itens de menu...
-  };
+    '/home/consultaCNPJ': [
+      { name: 'Inicio', href: '/home/max-fibra' },
+    ],
+    '/home/max-fibra/cadastro': [
+      { name: 'Inicio', href: '/home/max-fibra' },
+    ],
+    '/home/vir-telecom': [
+      { name: 'Dashboard Vir Telecom', href: '/home/vir-telecom/Dashboard-virtelecom' },
+      { name: 'Consultar CNPJ', href: '/home/consultaCNPJ' },
+    ],
+    '/vir-telecom/Dashboard-virtelecom': [
+      { name: 'Atalhos Vir Telecom', href: '/vir-telecom' },
+    ],
+    '/reis-services': [
+      { name: 'Opção 1 - Reis', href: '/reis-services/opcao1' },
+      { name: 'Opção 2 - Reis', href: '/reis-services/opcao2' },
+    ],
+    '/editar-perfil': [
+      { name: 'Dashboard', href: '/' },
+      { name: 'Max Fibra', href: '/max-fibra' },
+    ],
+    '/criar-usuario': [
+      { name: 'Dashboard', href: '/' },
+      { name: 'Max Fibra', href: '/max-fibra' },
+    ],
+    '/gerenciar-atalhos': [
+      { name: 'Dashboard', href: '/' },
+      { name: 'Max Fibra', href: '/max-fibra' },
+    ],
+    '/detalhes-dispositivos': [
+      { name: 'Dashboard', href: '/' },
+      { name: 'Cadastro Vendedor', href: '/max-fibra/cadastro' },
+    ],
+    '/fechamento': [
+      { name: 'Pagina Inicial', href: '/reis-services' },
+      { name: 'Fechamento', href: '/fechamento' },
+    ],
+    '/home': [
+      { name: 'Max Fibra', href: '/max-fibra' },
+      { name: 'Cadastro Vendedor', href: '/max-fibra/cadastro' },
+      { name: 'Consulta CNPJ', href: '/home/consultaCNPJ' },
+    ],
+};
+
 
   const currentPath = location.pathname;
   const options = menuOptions[currentPath] || [];

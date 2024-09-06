@@ -3,7 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from '../firebaseConfig';
 import uploadCompaniesToFirebase from '../uploadCompaniesToFirebase';
 
-const CompanySelector = ({ userProfile }) => {
+const CompanySelector = ({ userProfile, onCompanySelect }) => {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -47,26 +47,29 @@ const CompanySelector = ({ userProfile }) => {
     }
   }, [userProfile]);
 
+  const handleCompanySelect = (company) => {
+    onCompanySelect(company);  // Passa a empresa selecionada para o componente pai
+  };
+
   return (
     <div>
-      <h2>Verificando userProfile</h2>
+      <h2>Empresas Disponíveis:</h2>
       {loading ? (
         <div>Carregando empresas...</div>
       ) : error ? (
         <div style={{ color: 'red' }}>{error}</div>
       ) : (
-        <div>
-          <h2>Empresas Disponíveis:</h2>
-          <ul>
-            {companies.length > 0 ? (
-              companies.map((company, index) => (
-                <li key={index}>{company}</li>
-              ))
-            ) : (
-              <li>Nenhuma empresa disponível</li>
-            )}
-          </ul>
-        </div>
+        <ul>
+          {companies.length > 0 ? (
+            companies.map((company, index) => (
+              <li key={index} onClick={() => handleCompanySelect(company)} style={{ cursor: 'pointer' }}>
+                {company}
+              </li>
+            ))
+          ) : (
+            <li>Nenhuma empresa disponível</li>
+          )}
+        </ul>
       )}
     </div>
   );
