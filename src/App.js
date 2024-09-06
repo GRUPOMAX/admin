@@ -214,8 +214,8 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/" element={<Home userProfile={userProfile}/>} />
         <Route path="/detalhes-dispositivos" element={<DetalhesDispositivos userProfile={userProfile}/>} />
         <Route path="/max-fibra" element={<MaxFibra userProfile={userProfile} />} />
-        <Route path="/consultaCPF" element={<ConsultaCpf />} />
         <Route path="/consultaCNPJ" element={<ConsultaCnpj />} />
+        <Route path="/vir-telecom/consultaCNPJ" element={<ConsultaCnpj />} />
         <Route path="/vir-telecom" element={<VirTelecom userProfile={userProfile}/>} />
         <Route path="/reis-services" element={<ReisServices userProfile={userProfile}/>} />
         <Route path="/contact" element={<Contact />} />
@@ -232,7 +232,7 @@ const SidebarLayout = ({ onLogout, userProfile, onProfileUpdate }) => (
         <Route path="/monitor-vps" element={<MonitorVPS userProfile={userProfile}/>} />
         <Route path="/galeria" element={<GalleryPage userProfile={userProfile}/>} />
         <Route path="/relatorio-fechamento" element={<Relatorios userProfile={userProfile}/>} />
-        <Route path="/fechamento" element={<Fechamento userProfile={userProfile}/>} />
+        <Route path="/reis-services/fechamento" element={<Fechamento userProfile={userProfile}/>} />
         <Route path="/paginaEmpresa" element={<PaginaEmpresas userProfile={userProfile}/>} />
         <Route path="/EnvioSupremo" element={<SupremoEnvioNotificacao userProfile={userProfile}/>} />
 

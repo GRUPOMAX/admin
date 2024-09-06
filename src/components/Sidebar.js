@@ -163,14 +163,17 @@ const Sidebar = ({ onLogout, userName }) => {
     ],
     '/home/vir-telecom': [
       { name: 'Dashboard Vir Telecom', href: '/home/vir-telecom/Dashboard-virtelecom' },
-      { name: 'Consultar CNPJ', href: '/home/consultaCNPJ' },
+      { name: 'Consultar CNPJ', href: '/home/vir-telecom/consultaCNPJ' },
     ],
-    '/vir-telecom/Dashboard-virtelecom': [
-      { name: 'Atalhos Vir Telecom', href: '/vir-telecom' },
+    '/home/vir-telecom/consultaCNPJ': [
+      { name: 'Inicio', href: '/home/vir-telecom' },
     ],
-    '/reis-services': [
-      { name: 'Opção 1 - Reis', href: '/reis-services/opcao1' },
-      { name: 'Opção 2 - Reis', href: '/reis-services/opcao2' },
+    '/home/vir-telecom/Dashboard-virtelecom': [
+      { name: 'inicio', href: '/home/vir-telecom' },
+      { name: 'Consultar CNPJ', href: '/home/vir-telecom/consultaCNPJ' },
+    ],
+    '/home/reis-services': [
+      { name: 'Fechamento Diario', href: '/home/reis-services/fechamento' },
     ],
     '/editar-perfil': [
       { name: 'Dashboard', href: '/' },
@@ -188,9 +191,8 @@ const Sidebar = ({ onLogout, userName }) => {
       { name: 'Dashboard', href: '/' },
       { name: 'Cadastro Vendedor', href: '/max-fibra/cadastro' },
     ],
-    '/fechamento': [
-      { name: 'Pagina Inicial', href: '/reis-services' },
-      { name: 'Fechamento', href: '/fechamento' },
+    '/home/reis-services/fechamento': [
+      { name: 'Inicio', href: '/home/reis-services' },
     ],
     '/home': [
       { name: 'Max Fibra', href: '/max-fibra' },
