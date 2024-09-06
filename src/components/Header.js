@@ -8,7 +8,7 @@ import axios from 'axios';
 import uploadCompaniesToFirebase from '../uploadCompaniesToFirebase';
 import './Header.css';
 
-const Header = ({ userProfile, onLogout }) => {
+const Header = ({ userProfile, onLogout, selectedCompany }) => {
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -390,7 +390,7 @@ const Header = ({ userProfile, onLogout }) => {
     <div className="header">
       <div className="header-left">
         <div className="user-info">
-          <span>{userProfile.name}</span>
+        <span>{userProfile.name} - {selectedCompany}</span> {/* Exibindo o nome da empresa */}
         </div>
       </div>
       <div className="header-right">

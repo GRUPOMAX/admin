@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Spin, message, Button } from 'antd';
-import { CopyOutlined } from '@ant-design/icons';
+import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
 import axios from 'axios';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 import './styles/BloqueadosDashboardVIRTELECOM.css';
 
 const BloqueadosDashboardVIRTELECOM = () => {
@@ -53,6 +55,42 @@ const BloqueadosDashboardVIRTELECOM = () => {
     });
   };
 
+  // Função para exportar os dados para XLSX
+  const exportToXLSX = () => {
+    // Filtrar campos indesejados e adicionar a "Razão Social"
+    const filteredData = data.map(({ RAZAO_SOCIAL, CPF_CNPJ, ID_CONTRATO, SITUACAO_CONTRATO, DATA_INICIO, DIA_VENCIMENTO, telefone }) => ({
+      'Razão Social': RAZAO_SOCIAL, // Inclui a coluna "Razão Social"
+      'CPF/CNPJ': CPF_CNPJ,
+      'Telefone': telefone,
+    }));
+
+    // Criar a planilha Excel
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+    const wb = XLSX.utils.book_new();
+    
+    // Adicionar o título "Bloqueados VIR TELECOM"
+    XLSX.utils.sheet_add_aoa(ws, [['Bloqueados VIR TELECOM']], { origin: 'A1' });
+
+    // Mover os dados abaixo do título
+    XLSX.utils.sheet_add_json(ws, filteredData, { origin: 'A2', skipHeader: true });
+
+    XLSX.utils.book_append_sheet(wb, ws, 'Bloqueados');
+
+    // Gerar o arquivo Excel e o baixar
+    const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+    const blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream' });
+    saveAs(blob, 'bloqueados.xlsx');
+  };
+
+  const s2ab = (s) => {
+    const buf = new ArrayBuffer(s.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i < s.length; i++) {
+      view[i] = s.charCodeAt(i) & 0xFF;
+    }
+    return buf;
+  };
+
   const columns = [
     {
       title: 'Razão Social',
@@ -100,6 +138,9 @@ const BloqueadosDashboardVIRTELECOM = () => {
     <div className="bloqueados-dashboard-container">
       <h2>Dashboard - Bloqueados VIRTELECOM</h2>
       <p>Total de Contratos Bloqueados: {total}</p>
+      <Button type="primary" icon={<DownloadOutlined />} onClick={exportToXLSX}>
+        Baixar XLSX
+      </Button>
       {loading ? (
         <Spin size="large" tip="Carregando dados..." />
       ) : (

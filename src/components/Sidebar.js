@@ -187,7 +187,7 @@ const Sidebar = ({ onLogout, userName }) => {
       { name: 'Dashboard', href: '/' },
       { name: 'Max Fibra', href: '/max-fibra' },
     ],
-    '/detalhes-dispositivos': [
+    '/home/monitor-vps': [
       { name: 'Dashboard', href: '/' },
       { name: 'Cadastro Vendedor', href: '/max-fibra/cadastro' },
     ],
