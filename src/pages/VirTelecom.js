@@ -8,8 +8,9 @@ import './styles/VirTelecom.css';
 // Definindo permissões de acesso com base no cargo do usuário
 const accessPermissions = {
   Administrador: ['ISP', 'PortalOperacional', 'OpaSuite', 'Chatwoot', 'DFV', 'ConsultaCPF', 'Canva', 'Trello'],
-  Financeiro: ['DFV', 'ConsultaCPF', 'Canva', 'Trello'],
-  Vendedor: ['OpaSuite', 'Chatwoot', 'Canva', 'Trello'],
+  Desenvolvedor: ['ISP', 'PortalOperacional', 'OpaSuite', 'Chatwoot', 'DFV', 'ConsultaCPF', 'Canva', 'Trello'],
+  Financeiro: ['ISP', 'PortalOperacional','DFV', 'ConsultaCPF','OpaSuite', 'Canva', 'Trello'],
+  Vendedor: ['ISP','OpaSuite', 'Chatwoot', 'Canva', 'Trello'],
 };
 
 const VirTelecom = ({ userProfile }) => {
