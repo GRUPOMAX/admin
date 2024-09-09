@@ -7,14 +7,14 @@
   width: 100%;
 }
 
-.ant-card {
+.consulta-cnpj-container .ant-card {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   border: none;
   max-width: 600px; /* Diminui o limite máximo de largura para 600px */
 }
 
-.ant-card-body {
+.consulta-cnpj-container .ant-card-body {
   padding: 40px;
 }
 

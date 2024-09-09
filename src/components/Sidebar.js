@@ -175,7 +175,7 @@ const Sidebar = ({ onLogout, userName }) => {
     '/home/reis-services': [
       { name: 'Fechamento Diario', href: '/home/reis-services/fechamento' },
     ],
-    '/editar-perfil': [
+    '/home/editar-perfil': [
       { name: 'Dashboard', href: '/' },
       { name: 'Max Fibra', href: '/max-fibra' },
     ],
@@ -195,8 +195,8 @@ const Sidebar = ({ onLogout, userName }) => {
       { name: 'Inicio', href: '/home/reis-services' },
     ],
     '/home': [
-      { name: 'Max Fibra', href: '/max-fibra' },
-      { name: 'Cadastro Vendedor', href: '/max-fibra/cadastro' },
+      { name: 'Max Fibra', href: '/home/max-fibra' },
+      { name: 'Cadastro Vendedor', href: '/home/max-fibra/cadastro' },
       { name: 'Consulta CNPJ', href: '/home/consultaCNPJ' },
     ],
 };

@@ -3,15 +3,14 @@
     width: 100%;
   }
   
-  .ant-card {
+  .detalhes-dispositivos-container .ant-card {
+    width: 100%;
+  }
+  .detalhes-dispositivos-container .ant-table-wrapper {
     width: 100%;
   }
   
-  .ant-table-wrapper {
-    width: 100%;
-  }
-  
-  .ant-table {
+  .detalhes-dispositivos-container .ant-table {
     width: 100%;
     margin: 0 auto;
   }
