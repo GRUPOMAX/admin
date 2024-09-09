@@ -285,7 +285,7 @@
   
   
   /* Mostrar o aviso em telas MAIORES que 1912px */
-  @media (width: 1912px) {
+  @media (min-width: 1912px) {
   
     .dashboard-container .ant-card {
       width: 300px;
@@ -313,7 +313,7 @@
     .chart-container {
       position: absolute;
       left: 443px;
-      top: 21vw;
+      top: 22vw;
       width: 80%;
       z-index: 12; /* Isso faz com que o gráfico fique sobreposto a outros elementos */
     }
@@ -322,12 +322,14 @@
       text-align: center;
       position: absolute;  
       padding-top: 20vw;
-      margin-left: 124vh;
+      margin-left: 114vh;
       z-index: 11;
     }
   
     
   }
+
+  
   
   /* Ajuste para telas com largura de 1600px */
   @media (width: 1600px) {
