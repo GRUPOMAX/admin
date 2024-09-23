@@ -49,6 +49,7 @@ const MaxFibra = ({ userProfile }) => {
         { id:'Totem' ,url: 'https://maxfibra.myog.io/admin/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/DATACAKE.png', altText: 'Area Administração - Totem', text: 'Area Administração - Totem' },
         { id:'GeradorProposta' ,url: 'https://grupomax.github.io/Gerador_Proposta_Comercial/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/PropostaComecial.jpg', altText: 'Gerador de Proposta', text: 'Gerador de Proposta' },
         { id: 'ConsultaCPF', url: 'https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/PRO.gif', altText: 'CPF CONSULTA', text: 'Consulta CPF' },
+        { id: 'SSA', url: 'https://ssabrasil.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SSA-BRASIL.jpg', altText: 'SSA BRASIL', text: 'SSA BRASIL' },
       ],
     },
     {
