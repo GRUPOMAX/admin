@@ -1,7 +1,7 @@
 @echo off
 
 REM Muda para o diretório do repositório
-cd "C:\Users\Joao\Documents\AREA ADMISTRATIVA\admin"
+cd "C:\Users\Joao\Documents\CLONE\admin"
 
 REM Verifica se há alterações não comitadas
 git diff --quiet && git diff --cached --quiet
@@ -26,7 +26,7 @@ git push
 echo Alterações enviadas com sucesso!
 
 REM Navega até o diretório src
-cd "C:\Users\Joao\Documents\AREA ADMISTRATIVA\admin\src"
+cd "C:\Users\Joao\Documents\CLONE\admin\src"
 
 REM Executa o comando npm run deploy
 npm run deploy

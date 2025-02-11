@@ -4,10 +4,10 @@ import LinkItem from '../components/LinkItem';
 import './styles/MaxFibra.css';
 
 const accessPermissions = {
-  Administrador: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
-  Desenvolvedor: ['Chatwoot','IXC', 'IXCMapas','IXCService','IXCAcs',  'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
-  Financeiro: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'Secullum', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT', 'OpaSuite', 'CredLocaliza','SSA', 'ConsultaCPF'],
-  Vendedor: ['Canva', 'Gmail', 'Trello', 'ConsultaCPF'],
+  Administrador: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'IXCwiki','R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
+  Desenvolvedor: ['Chatwoot','IXC', 'IXCMapas','IXCService','IXCAcs', 'IXCwiki', 'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
+  Financeiro: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'Secullum','IXCwiki', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT', 'OpaSuite', 'CredLocaliza','SSA', 'ConsultaCPF'],
+  Vendedor: ['Canva', 'Gmail', 'Trello', 'ConsultaCPF','IXCwiki',],
 };
 
 const MaxFibra = ({ userProfile }) => {
@@ -29,6 +29,7 @@ const MaxFibra = ({ userProfile }) => {
         { id: 'IXCMapas', url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=fiber', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-IMAP.png', altText: 'IXC - FiberDocs', text: 'IXC - Imap' },
         { id: 'IXCService', url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=service', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-SERVICE.png', altText: 'IXC - Service', text: 'IXC - Service' },
         { id: 'IXCAcs', url: 'https://acs.maxfibraltda.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/PRO-1-1.gif', altText: 'IXC - ACS', text: 'IXC - ACS' },
+        { id: 'IXCwiki', url: 'https://wiki-erp.ixcsoft.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2025/02/IXC-Wiki.jpg', altText: 'IXC - Wiki', text: 'IXC - Wiki' },
       ],
     }, //PROGRAMA ANALISE E MONITORAMENTO  =================
     {
