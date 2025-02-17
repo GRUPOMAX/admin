@@ -37,7 +37,6 @@ const MaxFibra = ({ userProfile }) => {
       links: [
             { id: 'DTDashboard', url: 'https://painel.hotspotsocial.xyz/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2025/02/DT-network-1.jpg', altText: 'DT-NETWORK', text: 'DT-NETWORK'},
             { id:'SmartOLT' ,url: 'https://grupomaxltda.smartolt.com/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SMART-OLT.png', altText: 'SMART-OLT', text: 'Smart-Olt'},
-            { id:'SmartOLT' ,url: 'https://grupomaxltda.smartolt.com/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SMART-OLT.png', altText: 'SMART-OLT', text: 'Smart-Olt'},
             { id:'Grafana' , url: 'http://172.25.255.20:3000/login', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Grafana.png', altText: 'GRAFANA',text: 'Grafana'  },
             { id: 'R8Rastreadores', url: 'https://www.r8rastreadores.com.br/map', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/06/R8-RASTREIO-1.jpg', altText: 'R8 - RASTREIO', text: 'R8 Rastreadores' },
           ],
