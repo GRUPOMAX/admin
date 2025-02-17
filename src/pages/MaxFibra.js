@@ -25,7 +25,7 @@ const MaxFibra = ({ userProfile }) => {
     {
       title: 'Programas IXC',
       links: [
-        { id: 'DTDashboard', url: 'https://painel.hotspotsocial.xyz/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2025/02/DT-network-1.jpg', altText: 'DT-NETWORK', text: 'DT-NETWORK'},
+        { id: 'IXC', url: 'https://ixc.maxfibraltda.com.br/adm.php', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-PROVEDOR.png', altText: 'IXC', text: 'IXC', popupText: 'Para acessar esse atalho é <br>necessário fazer <strong> <a href="https://ixc.maxfibraltda.com.br/adm.php" target="_blank" rel="noopener noreferrer">Login</a></strong>'},
         { id: 'IXCMapas', url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=fiber', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-IMAP.png', altText: 'IXC - FiberDocs', text: 'IXC - Imap' },
         { id: 'IXCService', url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=service', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-SERVICE.png', altText: 'IXC - Service', text: 'IXC - Service' },
         { id: 'IXCAcs', url: 'https://acs.maxfibraltda.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/PRO-1-1.gif', altText: 'IXC - ACS', text: 'IXC - ACS' },
@@ -35,6 +35,7 @@ const MaxFibra = ({ userProfile }) => {
     {
       title: 'Analise e Monitoramento',
       links: [
+            { id: 'DTDashboard', url: 'https://painel.hotspotsocial.xyz/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2025/02/DT-network-1.jpg', altText: 'DT-NETWORK', text: 'DT-NETWORK'},
             { id:'SmartOLT' ,url: 'https://grupomaxltda.smartolt.com/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SMART-OLT.png', altText: 'SMART-OLT', text: 'Smart-Olt'},
             { id:'SmartOLT' ,url: 'https://grupomaxltda.smartolt.com/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SMART-OLT.png', altText: 'SMART-OLT', text: 'Smart-Olt'},
             { id:'Grafana' , url: 'http://172.25.255.20:3000/login', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Grafana.png', altText: 'GRAFANA',text: 'Grafana'  },
