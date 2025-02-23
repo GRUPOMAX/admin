@@ -1,55 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import LinkItem from '../components/LinkItem';
 import './styles/ReisServices.css';
 
-const accessPermissions = {
-  Loja: ['SigeCloud', 'Canva','Gmail','driver', 'Sigecloud-Adm'],
-  Administrador: ['SigeCloud', 'Canva','Gmail','driver', 'Sigecloud-Adm'],
-  Dev: ['SigeCloud', 'Canva','Gmail','driver', 'Sigecloud-Adm']
-};
-
 const ReisServices = ({ userProfile }) => {
-  // Acessando o cargo do usuário
-  const cargo = userProfile?.Cargo1;
-  console.log('User Profile',userProfile);
+  const [sections, setSections] = useState([]);
+  const [permissions, setPermissions] = useState({});
 
-  // Verifique se o cargo está corretamente definido
-  if (!userProfile || !cargo) {
+  useEffect(() => {
+    fetch('https://api.dashboard.admin.nexusnerds.com.br/api/reis-links') // Certifique-se de que a porta e o endpoint estão corretos
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.sections && data.accessPermissions) {
+          setSections(data.sections);
+          setPermissions(data.accessPermissions);
+        } else {
+          console.error('Formato de dados inválido:', data);
+        }
+      })
+      .catch(error => console.error('Falha ao carregar dados:', error));
+  }, []);
+
+  if (!userProfile || !userProfile.Cargo1) {
     console.error("Erro: Cargo não está definido ou userProfile é inválido:", userProfile);
     return <p>Erro: Perfil de usuário inválido.</p>;
   }
 
-  const sections = [
-    {
-      title: 'Atalhos Administrativos',
-      links: [
-        { id: 'SigeCloud', url: 'https://app.sigecloud.com.br/Login.aspx', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SIGE-CLOUD.jpg', altText: 'SigeCloud', text: 'IXC Admin', popupText: 'Para acessar esse atalho é <br>necessário fazer <strong> Fazer Login'},
-      ],
-    },
-    //PROGRAMA ADMINISTRAÇÃO  ==========================
-    {
-      title: 'Administração e Controle',
-      links: [
-        { id:'Sigecloud-Adm' ,url: 'https://app.sigecloud.com.br/pdv', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SIGE-CLOUD-CAIXA.jpg', altText: 'SigeCloud-Caixa', text: 'SigeCloud - Caixa'},],
-    },
-    //PROGRAMA PROGRAMAS UTEIS  ========================
-    {
-      title: 'Atalhos úteis',
-      links: [
-        { id:'Canva' ,url: 'https://www.canva.com/pt_br/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Canva.png', altText: 'Canva',text: 'Canva', popupText: 'Para acessar esse atalho é <br> necessário está conectado em uma <br>conta do <strong>Grupo Max</strong>' },
-        { id:'Gmail' ,url: 'https://drive.google.com/drive/folders/1j55i0j7FnzWh_a2DOgJNaDZW6vt9_zrs?usp=sharing',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/07/Fechamento.jpg', altText: 'Fechamento', text: 'Fechamento' },
-        { id:'driver' ,url: 'https://drive.google.com/drive/folders/1hyL5kDz5xpyepVsu5MMHvxWonzMnSAJN?usp=sharing',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/07/GOOGLE-DRIVER.jpg', altText: 'Google Driver Reis Service', text: 'Google Driver - Reis Service', popupText: 'Para acessar esse atalho é <br> necessário está conectado em uma <br>conta do <strong>Grupo Max</strong>' },
-          ],
-    },
-    //PROGRAMA PROGRAMAS UTEIS  ========================
-  ];
+  const cargo = userProfile.Cargo1;
 
-  // Filtrando os links com base no cargo do usuário
-  const filteredSections = sections.map((section) => ({
+  // Filtrando os links com base nas permissões dinâmicas carregadas
+  const filteredSections = sections.map(section => ({
     ...section,
-    links: section.links.filter((link) => accessPermissions[cargo]?.includes(link.id)),
+    links: section.links.filter(link => permissions[cargo]?.includes(link.id)),
   }));
+
 
   return (
     <div className="max-fibra">

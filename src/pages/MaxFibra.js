@@ -1,84 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import LinkItem from '../components/LinkItem';
 import './styles/MaxFibra.css';
 
-const accessPermissions = {
-  Administrador: ['DTDashboard','IXC', 'IXCMapas','IXCService','IXCAcs',  'IXCwiki','R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
-  Desenvolvedor: ['DTDashboard','Chatwoot','IXC', 'IXCMapas','IXCService','IXCAcs', 'IXCwiki', 'R8Rastreadores', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT','Grafana', 'Dpv-Vendas', 'Secullum', 'CredLocaliza', 'PLayHUB', 'Totem', 'Playhub-biblioteca', 'GeradorProposta', 'ConsultaCPF', 'SSA'],
-  Financeiro: ['IXC', 'IXCMapas','IXCService','IXCAcs',  'Secullum','IXCwiki', 'OpaSuite', 'CredLocaliza', 'Canva', 'Gmail', 'Trello', 'SmartOLT', 'OpaSuite', 'CredLocaliza','SSA', 'ConsultaCPF'],
-  Vendedor: ['Canva', 'Gmail', 'Trello', 'ConsultaCPF','IXCwiki',],
-};
-
 const MaxFibra = ({ userProfile }) => {
-  // Acessando o cargo do usuário
-  const cargo = userProfile?.Cargo1;
-  console.log('User Profile',userProfile);
+  const [sections, setSections] = useState([]);
+  const [permissions, setPermissions] = useState({});
 
-  // Verifique se o cargo está corretamente definido
-  if (!userProfile || !cargo) {
+  useEffect(() => {
+    fetch('https://api.dashboard.admin.nexusnerds.com.br/api/max-links')
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.sections && data.accessPermissions) {
+          setSections(data.sections);
+          setPermissions(data.accessPermissions);
+        } else {
+          console.error('Formato de dados inválido:', data);
+        }
+      })
+      .catch(error => console.error('Falha ao carregar seções:', error));
+  }, []);
+
+  if (!userProfile || !userProfile.Cargo1) {
     console.error("Erro: Cargo não está definido ou userProfile é inválido:", userProfile);
     return <p>Erro: Perfil de usuário inválido.</p>;
   }
 
-  const sections = [
-    {
-      title: 'Programas IXC',
-      links: [
-        { id: 'IXC', url: 'https://ixc.maxfibraltda.com.br/adm.php', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-PROVEDOR.png', altText: 'IXC', text: 'IXC', popupText: 'Para acessar esse atalho é <br>necessário fazer <strong> <a href="https://ixc.maxfibraltda.com.br/adm.php" target="_blank" rel="noopener noreferrer">Login</a></strong>'},
-        { id: 'IXCMapas', url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=fiber', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-IMAP.png', altText: 'IXC - FiberDocs', text: 'IXC - Imap' },
-        { id: 'IXCService', url: 'https://ixc.maxfibraltda.com.br/mapas.php?mode=service', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/IXC-SERVICE.png', altText: 'IXC - Service', text: 'IXC - Service' },
-        { id: 'IXCAcs', url: 'https://acs.maxfibraltda.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/PRO-1-1.gif', altText: 'IXC - ACS', text: 'IXC - ACS' },
-        { id: 'IXCwiki', url: 'https://wiki-erp.ixcsoft.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2025/02/IXC-Wiki.jpg', altText: 'IXC - Wiki', text: 'IXC - Wiki' },
-      ],
-    }, //PROGRAMA ANALISE E MONITORAMENTO  =================
-    {
-      title: 'Analise e Monitoramento',
-      links: [
-            { id: 'DTDashboard', url: 'https://painel.hotspotsocial.xyz/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2025/02/DT-network-1.jpg', altText: 'DT-NETWORK', text: 'DT-NETWORK'},
-            { id:'SmartOLT' ,url: 'https://grupomaxltda.smartolt.com/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SMART-OLT.png', altText: 'SMART-OLT', text: 'Smart-Olt'},
-            { id:'Grafana' , url: 'http://172.25.255.20:3000/login', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Grafana.png', altText: 'GRAFANA',text: 'Grafana'  },
-            { id: 'R8Rastreadores', url: 'https://www.r8rastreadores.com.br/map', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/06/R8-RASTREIO-1.jpg', altText: 'R8 - RASTREIO', text: 'R8 Rastreadores' },
-          ],
-    },
-    //PROGRAMA ADMINISTRAÇÃO  ==========================
-    {
-      title: 'Administração e Controle',
-      links: [
-        { id:'Secullum' ,url: 'https://autenticador.secullum.com.br/Authorization?response_type=code&client_id=3&redirect_uri=https%3A%2F%2Fpontoweb.secullum.com.br%2FAuth', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Secullum.png', altText: 'SECULLUM', text: 'Secullum - Ponto'},
-        { id:'CredLocaliza' ,url: 'https://credlocaliza.com.br/sistema/account/login',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/CRED-LOCALIZA.jpg', altText: 'CredLocaliza', text: 'CredLocaliza' },
-        { id:'PLayHUB' ,url: 'https://www.playhub.com.br/APP/Login',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/07/Copia-de-PRO.gif', altText: 'PlayHub', text: 'PlayHub' },
-        { id:'Totem' ,url: 'https://maxfibra.myog.io/admin/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/DATACAKE.png', altText: 'Area Administração - Totem', text: 'Area Administração - Totem' },
-        { id:'AreaAdministrativa' ,url: 'https://wiki-erp.ixcsoft.com.br/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2025/02/IXC-Wiki.jpg', altText: 'Wiki IXCSoft', text: 'Wiki - IXCSoft' },
-        { id:'GeradorProposta' ,url: 'https://grupomax.github.io/Gerador_Proposta_Comercial/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/PropostaComecial.jpg', altText: 'Gerador de Proposta', text: 'Gerador de Proposta' },
-        { id: 'ConsultaCPF', url: 'https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/08/PRO.gif', altText: 'CPF CONSULTA', text: 'Consulta CPF' },
-        { id: 'SSA', url: 'https://ssabrasil.com.br/', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/SSA-BRASIL.jpg', altText: 'SSA BRASIL', text: 'SSA BRASIL' },
-      ],
-    },
-    {
-      title: 'Atendimento ao Publico',
-      links: [
-        { id: 'OpaSuite', url: 'https://maxfibra.opasuite.com.br', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/OPA-Max.png', altText: 'Opa! Suite', text: 'OpaSuite!' },
-        { id: 'Chatwoot', url: 'https://chatwoot.nexusnerds.com.br', imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/06/PRO-1.gif', altText: 'Chatwoot', text: 'Chatwoot' },
-      ],
-    },
-    //PROGRAMA PROGRAMAS UTEIS  ========================
-    {
-      title: 'Programas úteis',
-      links: [
-        { id:'Canva' ,url: 'https://www.canva.com/pt_br/',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Canva.png', altText: 'Canva',text: 'Canva', popupText: 'Para acessar esse atalho é <br> necessário está conectado em uma <br>conta do <strong>Grupo Max</strong>' },
-        { id:'Gmail' ,url: 'https://mail.google.com/mail',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/gmail.png', altText: 'Gmail', text: 'Gmail' },
-        { id:'trello' ,url: 'https://trello.com/u/grupomax4/boards',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/Trello.png', altText: 'Trello', text: 'Trello' },
-        { id:'Playhub-biblioteca' ,url: 'https://warnerbros.ent.box.com/s/ykklojfiaf7taxwfnwsdapsybbbxjrev',imgSrc: 'https://maxfibraltda.com.br/wp-content/uploads/2024/05/PRO-3.gif',altText: 'Driver', text: 'Driver - PlayHub'},
-          ],
-    },
-    //PROGRAMA PROGRAMAS UTEIS  ========================
-  ];
+  // Cargo do usuário
+  const cargo = userProfile.Cargo1;
 
-  // Filtrando os links com base no cargo do usuário
-  const filteredSections = sections.map((section) => ({
+  // Filtrando os links com base nas permissões do cargo
+  const filteredSections = sections.map(section => ({
     ...section,
-    links: section.links.filter((link) => accessPermissions[cargo]?.includes(link.id)),
+    links: section.links.filter(link => permissions[cargo]?.includes(link.id))
   }));
 
   return (
@@ -89,11 +43,9 @@ const MaxFibra = ({ userProfile }) => {
           <div key={index}>
             <h2>{section.title}</h2>
             <div className="link-container-max-fibra">
-              {section.links.length > 0 ? (
-                section.links.map((link, idx) => (
-                  <LinkItem key={idx} {...link} />
-                ))
-              ) : (
+              {section.links.length > 0 ? section.links.map((link, idx) => (
+                <LinkItem key={idx} {...link} />
+              )) : (
                 <p>Sem Autorização</p>
               )}
             </div>
