@@ -10,9 +10,9 @@ const uploadCompaniesToFirebase = async (userProfile) => {
 
   try {
     // Solicita dados da API
-    const response = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records', {
+    const response = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records', {
       headers: {
-        'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+        'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
       },
     });
 

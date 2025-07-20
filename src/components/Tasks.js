@@ -43,9 +43,9 @@ const Tasks = ({ userProfile }) => {
   const fetchUsers = async () => {
     try {
       console.log('Carregando usuários...');
-      const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records', {
+      const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records', {
         headers: {
-          'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+          'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
         },
       });
       // Remove o próprio usuário da lista de destinatários

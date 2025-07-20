@@ -79,12 +79,12 @@ const Header = ({ userProfile, onLogout, selectedCompany }) => {
   const fetchNotifications = async () => {
     if (userProfile) {
       try {
-        const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/myd2oats63ype1t/records', {
+        const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m6vjm4kt2g89tt9/records', {
           params: {
             where: `(userId,eq,${userProfile.id})`,
           },
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
         });
 
@@ -180,11 +180,11 @@ const Header = ({ userProfile, onLogout, selectedCompany }) => {
       };
 
       await axios.patch(
-        'https://nocodb.nexusnerds.com.br/api/v2/tables/myd2oats63ype1t/records',
+        'https://nocodb.nexusnerds.com.br/api/v2/tables/m6vjm4kt2g89tt9/records',
         updatedNotification,
         {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
         }
       );
@@ -212,10 +212,10 @@ const Header = ({ userProfile, onLogout, selectedCompany }) => {
   const deleteNotification = async (notification) => {
     try {
       await axios.delete(
-        'https://nocodb.nexusnerds.com.br/api/v2/tables/myd2oats63ype1t/records',
+        'https://nocodb.nexusnerds.com.br/api/v2/tables/m6vjm4kt2g89tt9/records',
         {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
           data: { Id: notification.Id },
         }

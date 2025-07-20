@@ -14,9 +14,9 @@ const EditarPerfil = ({ userProfile, onProfileUpdate }) => {
     if (userProfile && userProfile.id) {
       // Buscar os dados do usuário com base no ID
       axios
-        .get(`https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records/${userProfile.id}`, {
+        .get(`https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records/${userProfile.id}`, {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
         })
         .then((response) => {
@@ -55,7 +55,7 @@ const EditarPerfil = ({ userProfile, onProfileUpdate }) => {
 
     axios
       .patch(
-        `https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records`,
+        `https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records`,
         {
           Id: userProfile.id,
           email: values.email,
@@ -67,7 +67,7 @@ const EditarPerfil = ({ userProfile, onProfileUpdate }) => {
         },
         {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
         }
       )

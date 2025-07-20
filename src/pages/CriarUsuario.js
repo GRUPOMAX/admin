@@ -36,11 +36,11 @@ const CriarUsuario = () => {
 
     axios
       .post(
-        'https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records',
+        'https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records',
         payload,
         {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
         }
       )

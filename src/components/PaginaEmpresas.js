@@ -19,12 +19,12 @@ const Header = ({ userProfile, onLogout }) => {
     const fetchNotifications = async () => {
       if (userProfile) {
         try {
-          const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/myd2oats63ype1t/records', {
+          const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m6vjm4kt2g89tt9/records', {
             params: {
               where: `(userId,eq,${userProfile.id})`,
             },
             headers: {
-              'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+              'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
             },
           });
           const unreadNotifications = data.list.filter(notification => !notification.isRead);
@@ -90,11 +90,11 @@ const Header = ({ userProfile, onLogout }) => {
       };
 
       const response = await axios.patch(
-        'https://nocodb.nexusnerds.com.br/api/v2/tables/myd2oats63ype1t/records',
+        'https://nocodb.nexusnerds.com.br/api/v2/tables/m6vjm4kt2g89tt9/records',
         updatedNotification,
         {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
         }
       );

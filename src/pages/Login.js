@@ -71,11 +71,11 @@ const Login = ({ onLogin }) => {
       console.log('Atualizando status para:', userData);
 
       const response = await axios.patch(
-        'https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records',
+        'https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records',
         userData,
         {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
         }
       );
@@ -89,12 +89,12 @@ const Login = ({ onLogin }) => {
   const handleLogin = async (values) => {
     setLoading(true);
     try {
-        const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records', {
+        const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records', {
             params: {
                 where: `(username,eq,${values.username})`,
             },
             headers: {
-                'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+                'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
             },
         });
 

@@ -66,9 +66,9 @@ const Sidebar = ({ onLogout, userName }) => {
   const fetchUserBirthdays = async () => {
     setLoadingBirthdays(true);
     try {
-      const response = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records', {
+      const response = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records', {
         headers: {
-          'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5', // Usar variável de ambiente para token
+          'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky', // Usar variável de ambiente para token
         },
       });
 

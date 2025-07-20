@@ -12,9 +12,9 @@ const SendNotification = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/m0wcogamwt1qc5e/records', {
+        const { data } = await axios.get('https://nocodb.nexusnerds.com.br/api/v2/tables/mjuogdam2c8ig6l/records', {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           },
         });
         setUsers(data.list);
@@ -56,14 +56,14 @@ const SendNotification = () => {
   const sendNotificationToUsers = async (userIds, notificationData) => {
     for (const userId of userIds) {
       await axios.post(
-        'https://nocodb.nexusnerds.com.br/api/v2/tables/myd2oats63ype1t/records',
+        'https://nocodb.nexusnerds.com.br/api/v2/tables/m6vjm4kt2g89tt9/records',
         {
           ...notificationData,
           userId,
         },
         {
           headers: {
-            'xc-token': 'ZqFzoCRvPCyzSRAIKPMbnOaLwR6laivSdxcpXiA5',
+            'xc-token': 'u-xaPqP6ZrF_bFjtxe9ebnJuByFykIfTuh9g2Zky',
           }
         }
       );
