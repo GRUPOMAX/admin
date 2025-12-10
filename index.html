@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Central Administrativa Max Fibra - Página desativada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              max: {
+                emerald: "#10b981",
+                cyan: "#06b6d4",
+                text: "#0f172a",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background: #f1f5f9;
+      }
+
+      /* ===== Toast ===== */
+      #toast {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      #toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen text-slate-800 flex items-center justify-center px-4 py-10">
+
+    <!-- ===== TOAST POPUP ===== -->
+    <div id="toast" class="fixed top-5 right-5 z-50">
+      <div class="flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg text-white 
+      bg-gradient-to-r from-emerald-500 to-cyan-500 border border-emerald-300/40">
+        <span class="font-semibold text-sm">Link copiado!</span>
+      </div>
+    </div>
+
+    <div
+      class="w-full max-w-3xl rounded-3xl bg-white border border-slate-200 shadow-xl p-6 sm:p-8"
+    >
+      <!-- Header -->
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <div>
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700"
+          >
+            <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
+            Central Administrativa Max Fibra
+          </span>
+
+          <h1 class="mt-4 text-3xl font-semibold text-slate-900">
+            Esta página foi desativada
+          </h1>
+
+          <p class="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
+            A antiga área administrativa acessada por
+            <span class="font-mono text-xs sm:text-sm text-slate-700 break-all">
+              https://grupomax.github.io/admin/#/home/max-fibra
+            </span>
+            não está mais ativa.
+          </p>
+        </div>
+
+        <div
+          class="hidden sm:flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-cyan-500 text-white shadow-lg"
+        >
+          <span class="text-xl font-bold">MF</span>
+        </div>
+      </div>
+
+      <!-- Nova URL -->
+      <section
+        class="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 mb-6 shadow-sm"
+      >
+        <div class="flex flex-col gap-1 mb-3">
+          <p class="text-sm font-medium text-slate-700">
+            Acesse agora a nova área administrativa:
+          </p>
+
+          <button
+            type="button"
+            onclick="irParaNovaArea()"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg hover:brightness-110 transition"
+          >
+            Ir para a nova Central ↗
+          </button>
+        </div>
+
+        <div
+          class="mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border border-slate-300 rounded-xl px-3 py-2.5 bg-slate-50"
+        >
+          <div class="text-xs sm:text-sm text-slate-700 break-all font-mono">
+            https://admin.center.appsy.app.br
+          </div>
+
+          <button
+            type="button"
+            onclick="copiarLink()"
+            class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-600 transition"
+          >
+            Copiar link
+          </button>
+        </div>
+
+        <p class="text-xs text-slate-500 mt-2">
+          Dica: salve o novo endereço nos favoritos do navegador para acessar com mais facilidade.
+        </p>
+      </section>
+
+      <!-- Passo a passo -->
+      <section
+        class="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-sm"
+      >
+        <h2 class="text-lg font-semibold text-slate-900 mb-3">
+          Como fazer o <span class="text-emerald-600">primeiro acesso</span> na nova Central
+        </h2>
+
+        <ol class="space-y-3 text-sm text-slate-800">
+          <li class="flex gap-3">
+            <span
+              class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 border border-emerald-300 text-emerald-700 text-[11px] font-semibold"
+              >1</span
+            >
+            <p>
+              Acesse o novo endereço:
+              <span class="font-mono text-xs text-slate-700">
+                https://admin.center.appsy.app.br
+              </span>
+            </p>
+          </li>
+
+          <li class="flex gap-3">
+            <span
+              class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 border border-emerald-300 text-emerald-700 text-[11px] font-semibold"
+              >2</span
+            >
+            <p>
+              Na tela de login, clique no botão
+              <span class="font-semibold text-emerald-700">“Primeiro acesso”</span>.
+            </p>
+          </li>
+
+          <li class="flex gap-3">
+            <span
+              class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 border border-emerald-300 text-emerald-700 text-[11px] font-semibold"
+              >3</span
+            >
+            <p>Informe os dados para validação:</p>
+          </li>
+        </ol>
+
+        <ul class="mt-2 ml-9 space-y-1 text-sm text-slate-700 list-disc">
+          <li>Nome completo</li>
+          <li>CPF</li>
+          <li>Data de nascimento</li>
+        </ul>
+
+        <p class="mt-3 text-sm text-slate-800">
+          Após a validação, a tela irá liberar os campos para você criar os
+          <span class="font-semibold text-emerald-700">novos dados de login</span>:
+        </p>
+
+        <ul class="mt-2 ml-5 space-y-1 text-sm text-slate-700 list-disc">
+          <li>Digite o e-mail que deseja utilizar como usuário;</li>
+          <li>Confirme o e-mail digitando novamente;</li>
+          <li>Crie uma senha e confirme a senha.</li>
+        </ul>
+
+        <p class="mt-3 text-xs sm:text-sm text-slate-500">
+          Depois disso, seu acesso ficará vinculado à nova Central. Nas próximas vezes, basta entrar com o e-mail e a senha que você cadastrou.
+        </p>
+      </section>
+
+      <!-- Rodapé -->
+      <div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p class="text-xs text-slate-500">
+          Caso já tenha criado usuário na nova Central, use seu
+          <span class="text-slate-700 font-medium">e-mail e senha</span> normalmente.
+        </p>
+        <p class="text-xs text-slate-500">
+          Grupo Max Fibra © <span id="ano-atual"></span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+      const NOVA_URL = "https://admin.center.appsy.app.br";
+
+      function irParaNovaArea() {
+        window.location.href = NOVA_URL;
+      }
+
+      function copiarLink() {
+        navigator.clipboard.writeText(NOVA_URL).then(() => {
+          showToast();
+        });
+      }
+
+      function showToast() {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+
+      document.getElementById("ano-atual").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
